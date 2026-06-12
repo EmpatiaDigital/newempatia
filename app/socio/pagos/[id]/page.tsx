@@ -3,7 +3,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // app/pagos/[id]/page.tsx  —  Página de pago de cuotas para el socio
 // ─────────────────────────────────────────────────────────────────────────────
-
 import { useState, useEffect, useRef, ChangeEvent } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
