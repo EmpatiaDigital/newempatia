@@ -7,7 +7,6 @@ import { useAuth } from "../context/AuthContext";
 import { Menu, X } from "lucide-react";
 import logoImg from "../assets/empatialog.jpeg";
 import "../style/Navbar.css";
-
 // ── Interfaces de Tipado Estricto ────────────────────────────────────────
 interface User {
   id: string;
