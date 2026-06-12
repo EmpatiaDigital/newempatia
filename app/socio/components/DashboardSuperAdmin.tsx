@@ -7,8 +7,6 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "../../assets/empatialog.jpeg";
 
-// ── Tipos ─────────────────────────────────────────────────────────────────────
-
 interface Socio {
   _id: string;
   nombre: string;
