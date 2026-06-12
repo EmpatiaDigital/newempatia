@@ -4,6 +4,7 @@ import Link from 'next/link';
 import contactImage from '../assets/familiaEMPATIA.jpg';
 import '../style/ContactSection.css';
 
+
 export default function ContactSection() {
   return (
     <section className="contact-section">
