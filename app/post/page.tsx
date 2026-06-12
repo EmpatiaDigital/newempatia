@@ -18,7 +18,6 @@ interface PostItem {
   avatar?: string;
   categoria?: string | string[];
 }
-
 interface PostsResponse {
   posts: PostItem[];
   totalPaginas: number;
