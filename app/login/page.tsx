@@ -10,7 +10,6 @@ import '../style/Login.css';
 export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
-
   const [correo, setCorreo] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [mostrarPassword, setMostrarPassword] = useState<boolean>(false);
