@@ -5,11 +5,10 @@ import Link from "next/link";
 import { FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import "../style/Footer.css";
 
-// 💡 Cambiamos JSX.Element por React.ReactElement para cumplir con el estándar estricto
+//  Cambiamos JSX.Element por React.ReactElement para cumplir con el estándar estricto
 export default function Footer(): React.ReactElement {
   const whatsappNumber: string = "3413559329";
   const whatsappMessage: string = encodeURIComponent("Me interesa comunicarme con vos");
-
   const [currentYear, setCurrentYear] = useState<number>(2026);
 
   useEffect(() => {
