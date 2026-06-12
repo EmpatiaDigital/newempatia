@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
 import ModalActividades from "./components/ModalActividades";
 import PostStatsMini from "./components/PostStatsMini";
 import "./style/HomePage.css";
