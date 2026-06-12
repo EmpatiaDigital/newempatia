@@ -10,8 +10,6 @@ import { useAuth } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import "../../style/Cuotas.css";
 
-// ── Tipos ─────────────────────────────────────────────────────────────────────
-
 type RolCuotas = "superadmin" | "admin" | "socio";
 
 type EstadoCuota =
