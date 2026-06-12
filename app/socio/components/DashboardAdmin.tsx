@@ -6,7 +6,6 @@ import Logo from "../../assets/empatialog.jpeg";
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();
-
   const handleLogout = (): void => {
     Swal.fire({
       title: "¿Cerrar sesión?",
