@@ -11,8 +11,6 @@ const PUNTOS_POR_CORRECTA = 20;
 const API = 'http://localhost:5000/api';
 const STORAGE_KEY = 'empatia_trivia_vistas';
 
-// ─── Tipos ────────────────────────────────────────────────────────────────────
-
 interface PreguntaRaw {
   pregunta: string;
   opciones: string[];
