@@ -3,8 +3,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 
-// ── INTERFACES ──────────────────────────────────────────────────────────────
-
 export interface User {
   username: string;
   role: string;
