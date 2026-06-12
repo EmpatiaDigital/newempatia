@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import fondoImg from '../assets/Juego.webp';
 import '../style/MyPost.css';
 
+
 const DEFAULT_AVATAR = 'https://cdn-icons-png.flaticon.com/512/64/64572.png';
 const API = 'http://localhost:5000/api';
 
