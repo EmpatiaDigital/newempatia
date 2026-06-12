@@ -19,6 +19,7 @@ const TURNO_VALUE_MAP: Record<string, string> = {
   indistinto: 'indistinto',
 };
 
+
 interface Course {
   _id: string;
   titulo: string;
