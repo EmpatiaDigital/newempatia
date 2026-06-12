@@ -1,0 +1,522 @@
+/* ==========================================================================
+   EDITOR.CSS 
+/* ==========================================================================
+   RESET LOCAL — evita que estilos globales del proyecto rompan el editor
+   ========================================================================== */
+.editor-container *,
+.editor-container *::before,
+.editor-container *::after {
+  box-sizing: border-box;
+}
+
+.editor-container button {
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1;
+  margin: 0;
+}
+
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================================== */
+.editor-container {
+  max-width: 820px;
+  margin: 2rem auto;
+  padding: 2.5rem 3rem;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.05),
+    0 4px 6px rgba(15, 23, 42, 0.04),
+    0 16px 40px rgba(15, 23, 42, 0.07);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.editor-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 2rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1.5px solid #e2e8f0;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   LABELS
+   ========================================================================== */
+.editor-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  color: #64748b;
+  display: block;
+  margin: 0.75rem 0 0.35rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   INPUTS, TEXTAREA, SELECT
+   ========================================================================== */
+.editor-input,
+.editor-textarea,
+.editor-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: #f8fafc;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+}
+
+.editor-input::placeholder,
+.editor-textarea::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.editor-input:focus,
+.editor-textarea:focus,
+.editor-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.editor-input:hover:not(:focus),
+.editor-textarea:hover:not(:focus),
+.editor-select:hover:not(:focus) {
+  border-color: #cbd5e1;
+  background-color: #f1f5f9;
+}
+
+.editor-textarea {
+  min-height: 88px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Select: flecha personalizada */
+.editor-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   INPUT FILE
+   ========================================================================== */
+.editor-file {
+  display: block;
+  margin-bottom: 1.25rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: #64748b;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.editor-file::file-selector-button {
+  padding: 0.38rem 0.85rem;
+  margin-right: 0.65rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 7px;
+  background: #f1f5f9;
+  color: #475569;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.14s ease, border-color 0.14s ease;
+}
+
+.editor-file::file-selector-button:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+/* ==========================================================================
+   PREVIEW PORTADA
+   ========================================================================== */
+.preview-portada-block {
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+.preview-portada {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.preview-portada-block:hover .preview-portada {
+  transform: scale(1.012);
+}
+
+/* ==========================================================================
+   TOOLBAR — layout fijo, sin overflow
+   ========================================================================== */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f1f5f9;
+  border: 1.5px solid #e2e8f0;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  padding: 0.55rem 0.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  row-gap: 0.35rem;
+}
+
+/* ── Botones de formato (Negrita, Itálica, etc.) ── */
+.toolbar > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 0.75rem;
+  border: 1.5px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #475569;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.13s ease, color 0.13s ease, border-color 0.13s ease;
+  /* Reset de cualquier estilo global */
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.toolbar > button:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.toolbar > button.active {
+  background: #1e3a5f;
+  color: #ffffff;
+  border-color: #1e3a5f;
+}
+
+/* ==========================================================================
+   GRUPO RECUADROS — siempre en la misma fila si cabe,
+   o en su propia fila si no cabe
+   ========================================================================== */
+.recuadro-picker-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 0.65rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 9px;
+  background: #ffffff;
+  flex-shrink: 0;
+  /* Separación visual del resto */
+  margin-left: 0.2rem;
+}
+
+.recuadro-picker-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  user-select: none;
+  white-space: nowrap;
+  padding-right: 2px;
+}
+
+/* ── Swatches: círculos siempre visibles ── */
+.swatch-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  /* El borde blanco interior hace que se vea como un anillo cuando está activo */
+  border: 2px solid #f1f5f9;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: transform 0.13s ease, box-shadow 0.13s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.swatch-btn:hover {
+  transform: scale(1.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Seleccionado: anillo exterior oscuro */
+.swatch-btn.active {
+  transform: scale(1.15);
+  border-color: #ffffff;
+  box-shadow:
+    0 0 0 2px #ffffff,
+    0 0 0 4px #1e3a5f,
+    0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Colores de cada swatch */
+.swatch-azul     { background-color: #2563eb; }
+.swatch-rojo     { background-color: #dc2626; }
+.swatch-verde    { background-color: #16a34a; }
+.swatch-amarillo { background-color: #ca8a04; }
+.swatch-violeta  { background-color: #7c3aed; }
+
+/* ==========================================================================
+   ÁREA TIPTAP
+   ========================================================================== */
+.tiptap {
+  border: 1.5px solid #e2e8f0;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  min-height: 320px;
+  padding: 1.4rem 1.6rem;
+  background: #ffffff;
+  margin-bottom: 1.5rem;
+  outline: none;
+  color: #1e293b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+  /* Evita que el contenido desborde */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.tiptap:focus-within {
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.09);
+}
+
+.tiptap p {
+  margin: 0 0 0.85rem 0;
+}
+
+.tiptap h1,
+.tiptap h2 {
+  font-family: 'Lora', Georgia, serif;
+  color: #0f172a;
+  font-weight: 600;
+  margin: 1.6rem 0 0.6rem 0;
+  line-height: 1.3;
+}
+
+.tiptap h1 { font-size: 1.65rem; }
+.tiptap h2 { font-size: 1.3rem; }
+
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.4rem;
+  margin: 0 0 0.85rem 0;
+}
+
+.tiptap li {
+  margin-bottom: 0.3rem;
+}
+
+.tiptap img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 1.25rem auto;
+  border-radius: 9px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+}
+
+.tiptap a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.13s ease;
+}
+
+.tiptap a:hover {
+  color: #1d4ed8;
+}
+
+/* Placeholder nativo de ProseMirror */
+.tiptap .is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #94a3b8;
+  pointer-events: none;
+  height: 0;
+}
+
+/* ==========================================================================
+   RECUADROS DINÁMICOS (CALLOUT BOXES)
+   ========================================================================== */
+.recuadro-dinamico {
+  margin: 1.25rem 0;
+  padding: 1rem 1.35rem;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  border-left: 5px solid #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.recuadro-azul     { border-left-color: #2563eb; background-color: #eff6ff; color: #1e40af; }
+.recuadro-rojo     { border-left-color: #dc2626; background-color: #fef2f2; color: #991b1b; }
+.recuadro-verde    { border-left-color: #16a34a; background-color: #f0fdf4; color: #166534; }
+.recuadro-amarillo { border-left-color: #ca8a04; background-color: #fefce8; color: #854d0e; }
+.recuadro-violeta  { border-left-color: #7c3aed; background-color: #faf5ff; color: #5b21b6; }
+
+.recuadro-dinamico p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   UPLOADING TEXT
+   ========================================================================== */
+.uploading-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #64748b;
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  animation: pulse-text 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* ==========================================================================
+   BOTÓN GUARDAR / PUBLICAR
+   ========================================================================== */
+.publish-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 0.8rem 2.5rem;
+  background: #1e3a5f;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.14s ease, box-shadow 0.18s ease;
+  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.22);
+  position: relative;
+  overflow: hidden;
+}
+
+.publish-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.publish-button:hover:not(:disabled) {
+  background: #162e4d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 58, 95, 0.28);
+}
+
+.publish-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 3px 7px rgba(30, 58, 95, 0.18);
+}
+
+.publish-button:disabled {
+  background: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media screen and (max-width: 680px) {
+  .editor-container {
+    padding: 1.4rem 1.1rem;
+    margin: 0.5rem;
+    border-radius: 14px;
+  }
+
+  .editor-title {
+    font-size: 1.4rem;
+  }
+
+  .toolbar {
+    padding: 0.45rem 0.5rem;
+    gap: 0.25rem;
+    row-gap: 0.3rem;
+  }
+
+  .toolbar > button {
+    height: 30px;
+    padding: 0 0.6rem;
+    font-size: 0.77rem;
+  }
+
+  .recuadro-picker-group {
+    height: 30px;
+    padding: 0 0.55rem;
+    gap: 5px;
+    margin-left: 0;
+    /* En mobile ocupa fila propia */
+    flex-basis: 100%;
+  }
+
+  .swatch-btn {
+    width: 16px;
+    height: 16px;
+  }
+
+  .tiptap {
+    padding: 1rem;
+    min-height: 220px;
+    font-size: 0.95rem;
+  }
+
+  .publish-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

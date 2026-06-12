@@ -1,0 +1,554 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+/* =============================================
+   PÁGINA COMPLETA
+   ============================================= */
+.error-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0f4fa;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+/* =============================================
+   HERO — imagen de fondo con overlay
+   ============================================= */
+.error-hero {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  background: #0d2340;
+}
+
+.error-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+/* Mismo gradiente doble que el carousel del home */
+.error-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(to right,  rgba(8, 22, 55, 0.92) 0%, rgba(8, 22, 55, 0.45) 55%, transparent 100%),
+    linear-gradient(to top,    rgba(8, 22, 55, 0.70) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.error-hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  padding: 0 64px 60px;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Eyebrow ── */
+.error-eyebrow {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #6bb3f0;
+  margin-bottom: 16px;
+  padding-left: 12px;
+  border-left: 2px solid #6bb3f0;
+}
+
+/* ── Título principal ── */
+.error-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  margin: 0 0 18px;
+}
+
+.error-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0 0 22px;
+  max-width: 520px;
+}
+
+/* ── Indicador de estado ── */
+.error-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.online  { background: #2ecc71; box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.25); }
+.status-dot.offline { background: #e74c3c; box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.25); }
+
+.status-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.3px;
+}
+
+/* ── Botón CTA — idéntico al btn-hero del home ── */
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #4a90d9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 13px 26px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: fit-content;
+}
+
+.btn-hero svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.btn-hero:hover {
+  background: #1e3a5f;
+}
+
+/* =============================================
+   SECCIÓN DEL JUEGO
+   ============================================= */
+.game-section {
+  padding: 64px 48px 72px;
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Header: info + stats ── */
+.game-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid #cdd8ea;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  gap: 32px;
+}
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4a90d9;
+  margin: 0 0 6px;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin: 0 0 12px;
+  letter-spacing: -0.2px;
+}
+
+.game-desc {
+  font-size: 13.5px;
+  color: #5a7a9a;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 480px;
+}
+
+.game-desc strong {
+  color: #1e3a5f;
+  font-weight: 500;
+}
+
+/* ── Stats cards ── */
+.game-stats {
+  display: flex;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.stat-card {
+  background: #fff;
+  border: 1px solid #d0daea;
+  border-radius: 8px;
+  padding: 14px 22px;
+  text-align: center;
+  min-width: 80px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7a8fa6;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  line-height: 1;
+}
+
+/* ── Mensaje de estado del juego ── */
+.game-message {
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  letter-spacing: 0.2px;
+}
+
+.msg-info {
+  background: rgba(74, 144, 217, 0.1);
+  color: #1e5a9f;
+  border: 1px solid rgba(74, 144, 217, 0.28);
+}
+
+.msg-win {
+  background: rgba(46, 204, 113, 0.1);
+  color: #0f6e38;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.msg-lose {
+  background: rgba(231, 76, 60, 0.1);
+  color: #922b1a;
+  border: 1px solid rgba(231, 76, 60, 0.28);
+}
+
+/* =============================================
+   TABLERO DEL JUEGO
+   ============================================= */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+  max-width: 520px;
+  margin: 0 auto 28px;
+}
+
+/* ── Celda base ── */
+.game-cell {
+  aspect-ratio: 1;
+  background: #fff;
+  border: 1px solid #cdd8ea;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  outline: none;
+  padding: 0;
+  position: relative;
+  user-select: none;
+}
+
+.game-cell:hover:not(.revealed) {
+  background: #edf2fa;
+  border-color: #4a90d9;
+  transform: scale(1.06);
+}
+
+.game-cell:active:not(.revealed) {
+  transform: scale(0.96);
+}
+
+/* Celda revelada vacía */
+.game-cell.revealed {
+  background: #f0f4fa;
+  border-color: #d0daea;
+  cursor: default;
+}
+
+/* Celda con robot */
+.game-cell.revealed.robot {
+  background: rgba(231, 76, 60, 0.12);
+  border-color: rgba(231, 76, 60, 0.4);
+}
+
+/* Celda marcada con bandera */
+.game-cell.flagged {
+  background: rgba(74, 144, 217, 0.08);
+  border-color: rgba(74, 144, 217, 0.4);
+}
+
+/* Iconos dentro de la celda */
+.robot-icon,
+.flag-icon,
+.adjacent-num {
+  font-size: 1rem;
+  line-height: 1;
+  font-style: normal;
+}
+
+.adjacent-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* ── Botones de fin de juego ── */
+.game-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #4a6a8a;
+  border: 1px solid #d0daea;
+  border-radius: 4px;
+  padding: 11px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-reset:hover {
+  background: #edf2fa;
+  border-color: #4a90d9;
+  color: #1e3a5f;
+}
+
+.btn-reset--primary {
+  background: #1e3a5f;
+  color: #fff;
+  border-color: #1e3a5f;
+}
+
+.btn-reset--primary:hover {
+  background: #4a90d9;
+  border-color: #4a90d9;
+  color: #fff;
+}
+
+/* =============================================
+   RESPONSIVE — TABLET GRANDE (≤1100px)
+   ============================================= */
+@media (max-width: 1100px) {
+  .game-section {
+    padding: 52px 36px 60px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — TABLET (≤991px)
+   ============================================= */
+@media (max-width: 991px) {
+  .error-hero {
+    height: 460px;
+  }
+
+  .error-hero-content {
+    padding: 0 40px 48px;
+    max-width: 100%;
+  }
+
+  .error-title {
+    font-size: 2.4rem;
+  }
+
+  .game-section {
+    padding: 48px 28px 56px;
+  }
+
+  .game-header {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .game-stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — TABLET CHICO (≤768px)
+   ============================================= */
+@media (max-width: 768px) {
+  .error-hero {
+    height: 420px;
+  }
+
+  .error-hero-content {
+    padding: 0 28px 40px;
+  }
+
+  .error-title {
+    font-size: 2rem;
+  }
+
+  .game-section {
+    padding: 40px 20px 48px;
+  }
+
+  .game-board {
+    max-width: 100%;
+    gap: 4px;
+  }
+
+  .game-cell {
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (≤600px)
+   ============================================= */
+@media (max-width: 600px) {
+  .error-hero {
+    height: 380px;
+  }
+
+  .error-hero-content {
+    padding: 0 20px 36px;
+  }
+
+  .error-eyebrow {
+    display: none;
+  }
+
+  .error-title {
+    font-size: 1.7rem;
+    margin-bottom: 14px;
+  }
+
+  .error-subtitle {
+    font-size: 13.5px;
+  }
+
+  .btn-hero {
+    padding: 11px 20px;
+    font-size: 12px;
+  }
+
+  .game-section {
+    padding: 32px 14px 40px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .game-desc {
+    font-size: 13px;
+  }
+
+  .game-stats {
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 10px 14px;
+    min-width: 68px;
+  }
+
+  .stat-value {
+    font-size: 1.3rem;
+  }
+
+  .game-board {
+    gap: 3px;
+  }
+
+  .game-cell {
+    border-radius: 3px;
+    font-size: 0.75rem;
+  }
+
+  .adjacent-num {
+    font-size: 0.72rem;
+  }
+
+  .robot-icon,
+  .flag-icon {
+    font-size: 0.8rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE PEQUEÑO (≤400px)
+   ============================================= */
+@media (max-width: 400px) {
+  .error-hero {
+    height: 340px;
+  }
+
+  .error-title {
+    font-size: 1.5rem;
+  }
+
+  .game-section {
+    padding: 24px 12px 32px;
+  }
+
+  .game-board {
+    gap: 2px;
+  }
+
+  .game-cell {
+    border-radius: 2px;
+    font-size: 0.68rem;
+  }
+}

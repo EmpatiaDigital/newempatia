@@ -1,0 +1,183 @@
+.contact-section {
+  padding: 5rem 2rem;
+  background: #f8fafc; /* Un fondo sutilmente más limpio y moderno */
+  color: #1e293b;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 1100px;
+  margin: auto;
+  gap: 4rem;
+  align-items: center; /* Centrado vertical para un mejor balance visual */
+  justify-content: center;
+  flex-direction: row;
+}
+
+/* ─── Texto izquierda ─── */
+.contact-text {
+  flex: 1 1 55%;
+  max-width: 600px;
+}
+
+.contact-text h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  color: #1e3a5f;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.contact-text h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #4a90d9, #6bb3f0);
+  border-radius: 2px;
+}
+
+.contact-text p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  color: #475569;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* ─── Lista de contacto ─── */
+.contact-list {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-top: 2.5rem;
+  width: 100%;
+  border-left: 2px solid rgba(74, 144, 217, 0.2);
+}
+
+.contact-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Un poco más de espacio de aire entre tarjetas */
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1rem;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.contact-list li:hover {
+  border-color: rgba(74, 144, 217, 0.2);
+  box-shadow: 0 6px 20px rgba(30, 58, 95, 0.05);
+  transform: translateX(4px);
+}
+
+.contact-list li a {
+  color: #334155;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.contact-list li:hover a {
+  color: #4a90d9; /* El enlace cambia sutilmente de color al pasar sobre la tarjeta */
+}
+
+/* ─── Tratamiento Premium de Íconos ─── */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(74, 144, 217, 0.08); /* Fondo ultra suave, no invasivo */
+  color: #1e3a5f; /* Color corporativo profundo para el trazo */
+  flex-shrink: 0;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.contact-list li:hover .icon-wrapper {
+  background: #1e3a5f; /* Invierte armónicamente solo en el hover de la tarjeta */
+  color: #ffffff;
+}
+
+.contact-icon {
+  display: block;
+}
+
+/* ─── Imagen derecha ─── */
+.contact-image {
+  flex: 1 1 40%;
+  max-width: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(30, 58, 95, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.contact-image:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(30, 58, 95, 0.12);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .contact-section {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .contact-text,
+  .contact-image {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .contact-text h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .contact-list {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid rgba(74, 144, 217, 0.15);
+    padding-top: 2rem;
+  }
+
+  .contact-list li {
+    text-align: left;
+  }
+}

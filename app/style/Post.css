@@ -1,0 +1,426 @@
+/* =============================================
+   LAYOUT GENERAL
+   ============================================= */
+.post-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 56px 48px 72px;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+}
+
+/* =============================================
+   ENCABEZADO DE PÁGINA
+   ============================================= */
+.titulo-principal {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  text-align: center;
+  margin: 0 0 8px;
+  letter-spacing: -0.2px;
+  text-transform: none;
+  border-bottom: none;
+  padding-bottom: 0;
+  display: block;
+}
+
+.titulo-principal::before {
+  content: 'Publicaciones';
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4a90d9;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.titulo-principal::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: #4a90d9;
+  margin: 14px auto 32px; /* Ajustado ligeramente para armonizar espacio superior */
+  border-radius: 2px;
+}
+
+/* =============================================
+   ESTADOS: CARGA / SIN DATOS
+   ============================================= */
+.post-loading,
+.post-no-data {
+  text-align: center;
+  font-size: 14px;
+  color: #7a8fa6;
+  margin-top: 60px;
+  padding: 40px;
+  letter-spacing: 0.2px;
+}
+
+/* =============================================
+   PAGINACIÓN (Limpia y autocontenida)
+   ============================================= */
+.post-paginacion {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Margen de seguridad extra al final de la página para la botonera inferior */
+.post-paginacion:last-of-type {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.paginacion-btn {
+  padding: 8px 14px;
+  border: 1px solid #d0daea;
+  border-radius: 4px;
+  background: #fff;
+  color: #4a6a8a;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  min-width: 38px;
+  text-align: center;
+}
+
+.paginacion-btn:hover {
+  background: #edf2fa;
+  border-color: #4a90d9;
+  color: #1e3a5f;
+}
+
+.paginacion-btn.activo {
+  background: #1e3a5f;
+  border-color: #1e3a5f;
+  color: #fff;
+  font-weight: 500;
+}
+
+.paginacion-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: #f2f5fa;
+  border-color: #e0e8f2;
+  color: #9aabbf;
+}
+
+/* =============================================
+   GRID DE POSTS — Empuja las barras de paginación
+   ============================================= */
+.lista-posts-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 0;
+  margin: 36px 0; /* Genera separación uniforme arriba y abajo sin choques */
+}
+
+/* =============================================
+   TARJETA INDIVIDUAL
+   ============================================= */
+.post-card {
+  position: relative;
+  height: 340px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #1e3a5f;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  outline: none;
+  box-shadow: 0 4px 16px rgba(20, 45, 90, 0.10);
+}
+
+.post-card:hover,
+.post-card:focus-visible {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(20, 45, 90, 0.20);
+}
+
+/* ── Imagen de fondo nativa (Reemplazo LCP) ── */
+.post-card-background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1; /* Al fondo de la tarjeta */
+  transition: transform 0.35s ease;
+}
+
+/* Efecto zoom premium en la imagen cuando pasamos el mouse por la tarjeta */
+.post-card:hover .post-card-background-img,
+.post-card:focus-visible .post-card-background-img {
+  transform: scale(1.04);
+}
+
+/* ── Badge de categoría ── */
+.card-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  left: auto;
+  z-index: 3; /* Por encima del overlay */
+  background: rgba(8, 22, 55, 0.82);
+  color: #6bb3f0;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 13px;
+  border-radius: 4px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(107, 179, 240, 0.22);
+  max-width: calc(100% - 28px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =============================================
+   OVERLAY (Capa oscura de lectura)
+   ============================================= */
+.post-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(6, 16, 42, 0.98) 0%,
+    rgba(6, 16, 42, 0.82) 42%,
+    rgba(6, 16, 42, 0.20) 68%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 18px 18px;
+  gap: 0;
+  z-index: 2; /* Por encima de la etiqueta img */
+}
+
+/* ── Fila avatar + autor ── */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  flex-shrink: 0;
+  background: #1e3a5f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50);
+}
+
+.post-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.post-autor {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #c8e2f8;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* ── Título ── */
+.post-title {
+  margin: 0 0 14px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.32;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Footer: separador + botón ── */
+.card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =============================================
+   BOTÓN VER MÁS
+   ============================================= */
+.btn-ver-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: rgba(74, 144, 217, 0.25);
+  color: #fff;
+  border: 1px solid rgba(107, 179, 240, 0.45);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: background 0.2s, border-color 0.2s;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+}
+
+.btn-ver-mas svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.btn-ver-mas:hover {
+  background: rgba(74, 144, 217, 0.65);
+  border-color: rgba(107, 179, 240, 0.75);
+}
+
+/* =============================================
+   RESPONSIVE — TABLET GRANDE (≤1100px)
+   ============================================= */
+@media (max-width: 1100px) {
+  .post-page {
+    padding: 52px 36px 60px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — TABLET (≤991px)
+   ============================================= */
+@media (max-width: 991px) {
+  .post-page {
+    padding: 48px 28px 56px;
+  }
+
+  .lista-posts-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 28px 0;
+  }
+
+  .titulo-principal {
+    font-size: 1.6rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — TABLET CHICO (≤768px)
+   ============================================= */
+@media (max-width: 768px) {
+  .post-page {
+    padding: 40px 20px 48px;
+  }
+
+  .lista-posts-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .post-card {
+    height: 310px;
+  }
+
+  .titulo-principal {
+    font-size: 1.5rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (≤600px)
+   ============================================= */
+@media (max-width: 600px) {
+  .post-page {
+    padding: 28px 14px 36px;
+  }
+
+  .titulo-principal {
+    font-size: 1.45rem;
+  }
+
+  .lista-posts-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .post-card {
+    height: 320px;
+  }
+
+  .post-title {
+    font-size: 1.05rem;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+  }
+
+  .post-autor {
+    font-size: 11px;
+  }
+
+  .btn-ver-mas {
+    padding: 7px 14px;
+    font-size: 11px;
+  }
+
+  .paginacion-btn {
+    padding: 7px 11px;
+    font-size: 12px;
+    min-width: 34px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE PEQUEÑO (≤400px)
+   ============================================= */
+@media (max-width: 400px) {
+  .post-page {
+    padding: 20px 12px 28px;
+  }
+
+  .post-card {
+    height: 300px;
+  }
+
+  .titulo-principal {
+    font-size: 1.3rem;
+  }
+}

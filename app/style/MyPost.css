@@ -1,0 +1,134 @@
+.contenedor-publicaciones {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.titulo-publicaciones {
+  text-align: center;
+  color: #00796b;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  border-bottom: 2px solid #80cbc4;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.grid-publicaciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.card-publicacion {
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-publicacion:hover {
+  transform: scale(1.02);
+}
+
+.contenido-card {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.autor {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 2px;
+}
+
+.acciones {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn-my-post-editar {
+  flex: 1;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #00796b;
+  color: white;
+}
+.btn-my-post-eliminar {
+  flex: 1;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color:rgb(121, 0, 8);
+  color: white;
+}
+
+.btn-my-post-editar:hover,.btn-my-post-eliminar:hover {
+  background-color: #004d40;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid-publicaciones {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .btn-my-post {
+    width: 100%;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+}
+
+/* Blur mínimo en .hero::before */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 150px;
+  bottom: 0;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  z-index: 1;
+}
