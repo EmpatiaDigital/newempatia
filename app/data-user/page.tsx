@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import '../style/UserData.css';
 
-// ── tipos ──────────────────────────────────────────────────────────────────────
-
 interface Actividad {
   _id: string;
   visitorId: string;
