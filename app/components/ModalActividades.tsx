@@ -14,8 +14,6 @@ export interface ActividadData {
   hora: string;
   imagen?: string;
 }
-
-// Estructura esperada para la respuesta de la API
 interface ApiResponse {
   actividades?: ActividadData[];
 }
