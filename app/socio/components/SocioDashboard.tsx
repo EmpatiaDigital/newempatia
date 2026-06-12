@@ -13,7 +13,6 @@ import '../../style/Socio.css';
 
 const API = 'http://localhost:5000';
 
-// ── Tipos ─────────────────────────────────────────────────────────────────────
 
 interface SocioData {
   _id: string;
