@@ -7,6 +7,7 @@ import { Home, RefreshCw, Bot, Flag } from "lucide-react";
 import errorImg from "../assets/error.jpg";
 import "../style/Error404.css";
 
+
 interface Cell {
   id: number;
   isRobot: boolean;
