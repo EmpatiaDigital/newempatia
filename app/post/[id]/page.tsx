@@ -9,6 +9,7 @@ import '../../style/PostCompleto.css';
 
 const DEFAULT_AVATAR = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
 
+
 interface Post {
   _id: string;
   titulo: string;
