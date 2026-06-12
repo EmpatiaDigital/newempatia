@@ -17,7 +17,6 @@ interface User {
   PostId?: string;
   active?: boolean;
 }
-
 // Extendemos el tipo de evento nativo para soportar el prompt de instalación de las PWA
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
