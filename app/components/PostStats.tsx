@@ -13,7 +13,6 @@ export interface FullStatsData {
   dislikes: number;
   miVoto: string | null;
 }
-
 export interface PostRelacionado {
   _id: string;
   portada?: string;
