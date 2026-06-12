@@ -5,8 +5,6 @@ import Swal from "sweetalert2";
 import { User, Mail, Phone, MapPin, UserPlus, Loader2 } from "lucide-react";
 import "../style/Register.css";
 
-// ── Types ──────────────────────────────────────────────────────────────────
-
 const EMPTY_FORM = {
   nombre: "",
   apellido: "",
