@@ -19,7 +19,6 @@ export interface PostStatsMiniProps {
 export default function PostStatsMini({ postId }: PostStatsMiniProps) {
   // ── 2. TIPADO DEL ESTADO: Permitimos la estructura de datos o null ──
   const [stats, setStats] = useState<PostStatsMiniData | null>(null);
-
   useEffect(() => {
     if (!postId) return;
     
