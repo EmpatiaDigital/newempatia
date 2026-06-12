@@ -6,8 +6,6 @@ import { useAuth } from "../../../context/AuthContext";
 import Swal from "sweetalert2";
 import "../../../style/SocioDetalle.css";
 
-// ── Tipos ─────────────────────────────────────────────────────────────────────
-
 interface CuotaMes {
   _id?: string;
   mes: number;
