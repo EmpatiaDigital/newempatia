@@ -7,11 +7,9 @@ import { useRouter } from "next/navigation";
 import avatarSrc from "../assets/avatar.jpeg";
 import "../style/Informacion.css";
 
-/* El PDF debe estar en /public/guia-empatia-digital.pdf
-   Copialo desde assets/ a public/ — Next.js sirve /public como raíz estática */
 const GUIA_PDF_DEFAULT = "/Guía Empatía Digital.pdf";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://empatia-dominio-back.vercel.app/api";
 
 /* ── tipos ── */
 interface ContenidoItem {
