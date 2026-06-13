@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import type { Resource, ResourceType } from "../types/recursos";
 import "../style/Recursos.css";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://empatia-dominio-back.vercel.app";
 
 const TIPOS: { value: ResourceType; label: string }[] = [
   { value: "pdf",    label: "PDF" },
