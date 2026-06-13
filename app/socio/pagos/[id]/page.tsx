@@ -9,7 +9,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import "../../../style/Pago.css";
 
-const API = 'http://localhost:5000';
+const API = 'https://empatia-dominio-back.vercel.app';
 
 const MESES = [
   'Enero','Febrero','Marzo','Abril','Mayo','Junio',
