@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import "../style/Reestablecer.css";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://empatia-dominio-back.vercel.app";
 
 export default function Reestablecer() {
   const [correo, setCorreo]               = useState("");
