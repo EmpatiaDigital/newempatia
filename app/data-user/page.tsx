@@ -51,7 +51,7 @@ const fmtDuracion = (seg: number): string => {
 
 const fetchTitulo = async (postId: string): Promise<string> => {
   try {
-    const res = await fetch(`http://localhost:5000/api/posts/${postId}`);
+    const res = await fetch(`https://empatia-dominio-back.vercel.app/api/posts/${postId}`);
     if (!res.ok) return postId;
     const data = await res.json();
     return (data.titulo as string) ?? postId;
@@ -126,7 +126,7 @@ const UserDataPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/user-actividad");
+        const res = await fetch("https://empatia-dominio-back.vercel.app/api/user-actividad");
         if (!res.ok) throw new Error("Error al obtener datos");
         const actividades: Actividad[] = await res.json();
         const raw = calcularBalance(actividades);
