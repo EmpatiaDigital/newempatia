@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "categoria": "Grooming",
+    "pregunta": "¿Cuál es la primera acción recomendada ante la sospecha de una situación de Grooming?",
+    "opciones": [
+      "Borrar inmediatamente todos los chats y bloquear el perfil del sospechoso.",
+      "Afrontar al atacante mediante mensajes privados para exigirle explicaciones.",
+      "Preservar las pruebas (capturas de pantalla, URLs, chats) sin alterar la evidencia y buscar ayuda especializada.",
+      "Publicar la denuncia en redes sociales para alertar a los conocidos."
+    ],
+    "respuestaCorrecta": 2,
+    "feedback": "¡Correcto! Nunca se deben borrar las pruebas, ya que son indispensables para el proceso legal. Preservar la evidencia digital en su estado original es clave."
+  },
+  {
+    "id": 2,
+    "categoria": "Crianza Digital",
+    "pregunta": "Para establecer límites saludables de pantallas en la infancia, la estrategia más efectiva es:",
+    "opciones": [
+      "Instalar un software de control parental estricto sin dialogar sobre los riesgos.",
+      "Co-diseñar acuerdos familiares de uso, priorizando espacios libres de tecnología (como las comidas).",
+      "Prohibir el uso absoluto de dispositivos tecnológicos hasta la adolescencia.",
+      "Dejar que gestionen su propio tiempo libremente para fomentar su autonomía desde el primer día."
+    ],
+    "respuestaCorrecta": 1,
+    "feedback": "¡Excelente! La mediación activa y los acuerdos familiares generan hábitos digitales saludables a largo plazo, mucho más que la simple restricción técnica."
+  },
+  {
+    "id": 3,
+    "categoria": "Ciberseguridad",
+    "pregunta": "¿Qué elemento aporta mayor seguridad para proteger las cuentas digitales de las plataformas educativas?",
+    "opciones": [
+      "Utilizar la misma contraseña segura para todas las aplicaciones.",
+      "Cambiar el nombre de usuario de forma mensual.",
+      "Evitar cerrar sesión en dispositivos de uso público.",
+      "Activar el Segundo Factor de Autenticación (2FA) mediante aplicaciones de verificación."
+    ],
+    "respuestaCorrecta": 3,
+    "feedback": "¡Exacto! El doble factor de autenticación garantiza que, aunque alguien adivine tu contraseña, no pueda ingresar a tus datos sin el código dinámico de tu celular."
+  },
+  {
+    "id": 4,
+    "categoria": "Grooming",
+    "pregunta": "¿Cuál es un indicador común de comportamiento en un niño o adolescente que podría estar sufriendo acoso o grooming en línea?",
+    "opciones": [
+      "Cambios bruscos de humor, aislamiento o esconder la pantalla de manera ansiosa al recibir notificaciones.",
+      "Compartir abiertamente lo que hace en internet con sus padres.",
+      "Aumento en el rendimiento escolar y deportivo.",
+      "Dejar de usar por completo cualquier dispositivo de forma voluntaria y definitiva."
+    ],
+    "respuestaCorrecta": 0,
+    "feedback": "¡Correcto! La ansiedad al recibir notificaciones o el ocultamiento sistemático de los dispositivos suelen ser señales de alarma que requieren atención y diálogo."
+  },
+  {
+    "id": 5,
+    "categoria": "Crianza Digital",
+    "pregunta": "Según los especialistas en salud digital, ¿cuál es la recomendación general sobre el uso de pantallas en niños menores de 2 años?",
+    "opciones": [
+      "Permitir hasta dos horas diarias de videos educativos guiados.",
+      "Dejar que interactúen con pantallas táctiles para desarrollar la motricidad fina.",
+      "Evitar por completo el uso de pantallas, excepto para videollamadas breves con familiares.",
+      "Utilizar dispositivos de manera libre siempre que los contenidos sean de colores suaves."
+    ],
+    "respuestaCorrecta": 2,
+    "feedback": "¡Exacto! En la primera infancia, el cerebro necesita interacción tridimensional y humana. El uso de pantallas antes de los 2 años no es recomendado para un desarrollo saludable."
+  },
+  {
+    "id": 6,
+    "categoria": "Ciberseguridad",
+    "pregunta": "Recibís un correo electrónico que simula ser de tu banco solicitando que actualices tus datos mediante un enlace urgente. ¿Cómo se conoce esta estafa?",
+    "opciones": [
+      "Cyberbullying",
+      "Phishing",
+      "Malware",
+      "Grooming"
+    ],
+    "respuestaCorrecta": 1,
+    "feedback": "¡Perfecto! El Phishing consiste en suplantar la identidad de una entidad legítima (como un banco o plataforma) para robar credenciales y datos confidenciales."
+  },
+  {
+    "id": 7,
+    "categoria": "Bienestar Digital",
+    "pregunta": "¿Qué es el fenómeno conocido como 'Vamping' en el uso de tecnologías?",
+    "opciones": [
+      "La instalación de virus que absorben datos del sistema de forma silenciosa.",
+      "Jugar videojuegos de terror o de roles de forma comunitaria.",
+      "El bloqueo de pantallas mediante contraseñas biométricas avanzadas.",
+      "El hábito de utilizar dispositivos electrónicos (celulares, tablets) a altas horas de la noche, reduciendo las horas de sueño."
+    ],
+    "respuestaCorrecta": 3,
+    "feedback": "¡Muy bien! El vamping afecta directamente la calidad del descanso y el ritmo circadiano debido a la luz azul de las pantallas antes de dormir."
+  },
+  {
+    "id": 8,
+    "categoria": "Grooming",
+    "pregunta": "Para que se configure el delito de Grooming en términos legales, el atacante debe ser:",
+    "opciones": [
+      "Una persona mayor de edad que contacte a un menor con el fin de cometer un delito contra la integridad sexual.",
+      "Cualquier menor de edad que realice bromas pesadas en salas de chat.",
+      "Una empresa que recopile datos de navegación de forma ilegal.",
+      "Un bot automatizado programado para enviar enlaces fraudulentos."
+    ],
+    "respuestaCorrecta": 0,
+    "feedback": "¡Exacto! La asimetría de edad y la intencionalidad sexual son factores jurídicos determinantes que tipifican este delito en el código penal."
+  },
+  {
+    "id": 9,
+    "categoria": "Crianza Digital",
+    "pregunta": "¿Qué significa el término 'Sharenting' y qué riesgos potenciales conlleva?",
+    "opciones": [
+      "Compartir cuentas de plataformas de streaming con vecinos del barrio.",
+      "Utilizar aplicaciones de geolocalización mutua entre los miembros del hogar.",
+      "La sobreexposición de fotos e información de los hijos en redes sociales por parte de sus padres, afectando su huella digital futura.",
+      "Dividir el pago de los abonos de internet entre los convivientes."
+    ],
+    "respuestaCorrecta": 2,
+    "feedback": "¡Excelente! El sharenting expone la privacidad de los menores antes de que tengan edad para decidir sobre su propia imagen e identidad digital."
+  },
+  {
+    "id": 10,
+    "categoria": "Ciberseguridad",
+    "pregunta": "Al descargar aplicaciones en el celular de los chicos, ¿cuál es la práctica más segura?",
+    "opciones": [
+      "Descargarlas desde cualquier enlace sugerido en videos de YouTube.",
+      "Utilizar únicamente las tiendas oficiales (Google Play Store o App Store) y verificar los permisos que solicita.",
+      "Desactivar el antivirus del celular para que la instalación sea más veloz.",
+      "Compartir los archivos ejecutables (.APK) mediante grupos abiertos de WhatsApp."
+    ],
+    "respuestaCorrecta": 1,
+    "feedback": "¡Exacto! Las tiendas oficiales filtran la mayor parte del software malicioso. Revisar los permisos evita que una app acceda a la cámara o contactos sin necesidad."
+  },
+  {
+    "id": 11,
+    "categoria": "Bienestar Digital",
+    "pregunta": "¿Qué entendemos por 'FOMO' (Fear of Missing Out) en el contexto del uso de redes sociales?",
+    "opciones": [
+      "El miedo técnico a quedarse sin señal de Wi-Fi en espacios públicos.",
+      "Un error de conexión en los servidores centrales de las bases de datos.",
+      "La fobia a realizar transiciones de dinero mediante billeteras virtuales.",
+      "La ansiedad o temor a perderse experiencias, eventos o conversaciones que otros están compartiendo en línea."
+    ],
+    "respuestaCorrecta": 3,
+    "feedback": "¡Así es! El FOMO genera una necesidad compulsiva de estar chequeando el teléfono constantemente para sentir que no nos quedamos fuera del grupo."
+  },
+  {
+    "id": 12,
+    "categoria": "Grooming",
+    "pregunta": "Un adulto que practica grooming suele iniciar el contacto mediante el 'engatuzamiento' o la creación de un vínculo de confianza falso. ¿Cómo se denomina esta fase?",
+    "opciones": [
+      "Grooming Stage o Fase de Captación (Luring)",
+      "Phishing masivo",
+      "Denegación de servicio",
+      "Filtro por geofencing"
+    ],
+    "respuestaCorrecta": 0,
+    "feedback": "¡Correcto! En esta etapa el atacante busca empatizar, escuchar y hacerse pasar por un amigo o confidente para derribar las alertas del menor."
+  },
+  {
+    "id": 13,
+    "categoria": "Crianza Digital",
+    "pregunta": "¿Cuál es la forma más saludable de gestionar los videojuegos en el hogar?",
+    "opciones": [
+      "Permitir juegos de cualquier temática siempre que se cumpla con las tareas escolares.",
+      "Desconectar el módem de internet de forma imprevista cuando queremos que corten.",
+      "Revisar la clasificación por edades (PEGI o ESRB), conversar sobre los contenidos y pactar tiempos de juego claros.",
+      "Fomentar que jueguen en habitaciones cerradas durante la madrugada para que no interrumpan la rutina familiar."
+    ],
+    "respuestaCorrecta": 2,
+    "feedback": "¡Perfecto! La clasificación por edad nos orienta sobre la madurez necesaria para cada juego, y el diálogo evita que el corte del juego se viva como un castigo violento."
+  },
+  {
+    "id": 14,
+    "categoria": "Ciberseguridad",
+    "pregunta": "¿Por qué es riesgoso conectarse a redes Wi-Fi públicas y abiertas para realizar trámites o compras?",
+    "opciones": [
+      "Porque cobran un recargo automático en la factura del teléfono.",
+      "Porque los datos viajan de manera expuesta y un tercero malintencionado en la misma red podría interceptar contraseñas o datos bancarios.",
+      "Porque disminuyen la vida útil de la batería del dispositivo.",
+      "Porque modifican la configuración regional del sistema operativo."
+    ],
+    "respuestaCorrecta": 1,
+    "feedback": "¡Exacto! En redes abiertas no sabemos quién está conectado. Nunca uses redes públicas para ingresar a tu banco o correos importantes sin una VPN."
+  },
+  {
+    "id": 15,
+    "categoria": "Bienestar Digital",
+    "pregunta": "¿Qué es la 'Huella Digital' en internet?",
+    "opciones": [
+      "El registro biométrico que dejamos al desbloquear la pantalla con el dedo.",
+      "La marca física que queda en los botones de los dispositivos.",
+      "El sistema de escaneo de los documentos de identidad para ingresar a apps estatales.",
+      "El rastro imborrable de datos, publicaciones, comentarios y búsquedas que dejamos al navegar por la red a lo largo del tiempo."
+    ],
+    "respuestaCorrecta": 3,
+    "feedback": "¡Muy bien! Todo lo que hacemos en internet construye nuestra reputación digital y puede ser consultado por terceros, universidades o empleadores en el futuro."
+  },
+  {
+    "id": 16,
+    "categoria": "Grooming",
+    "pregunta": "¿Qué entorno digital actual es frecuentemente utilizado por los groomers para iniciar el acercamiento con niños y niñas?",
+    "opciones": [
+      "Salas de chat integradas en videojuegos en línea masivos (como Roblox, Minecraft o Free Fire) y redes sociales de moda.",
+      "Plataformas de correo corporativo profesional.",
+      "Páginas estáticas de blogs de lectura técnica sin comentarios.",
+      "Sistemas operativos de código abierto orientados a servidores."
+    ],
+    "respuestaCorrecta": 0,
+    "feedback": "¡Exacto! Los atacantes buscan los espacios donde los chicos se divierten y relajan sus defensas, camuflándose detrás de avatares de juego o perfiles falsos de su misma edad."
+  },
+  {
+    "id": 17,
+    "categoria": "Crianza Digital",
+    "pregunta": "Frente a un caso de ciberacoso entre compañeros de escuela (Cyberbullying), ¿cuál debe ser el rol de los adultos a cargo?",
+    "opciones": [
+      "Minimizarlo argumentando que son 'cosas de chicos' que deben resolver solos.",
+      "Castigar a todo el curso prohibiendo las computadoras en el establecimiento.",
+      "Intervenir de forma institucional, escuchar a las partes, no revictimizar y trabajar en la concientización sobre empatía digital.",
+      "Sugerir a la víctima que responda con agresiones similares para defenderse."
+    ],
+    "respuestaCorrecta": 2,
+    "feedback": "¡Excelente! El ciberacoso requiere un abordaje pedagógico y comunitario. Ignorarlo amplifica el daño psicológico en los entornos virtuales."
+  },
+  {
+    "id": 18,
+    "categoria": "Ciberseguridad",
+    "pregunta": "Si un software malicioso cifra tus archivos privados y te exige un pago en criptomonedas para desbloquearlos, estás ante un ataque de:",
+    "opciones": [
+      "Adware",
+      "Ransomware",
+      "Spyware",
+      "Spam"
+    ],
+    "respuestaCorrecta": 1,
+    "feedback": "¡Correcto! El Ransomware es un secuestro digital de datos. La mejor prevención es mantener copias de seguridad de tus archivos en discos externos fuera de la red."
+  },
+  {
+    "id": 19,
+    "categoria": "Bienestar Digital",
+    "pregunta": "¿Qué práctica define una verdadera 'Desintoxicación Digital' (Digital Detox)?",
+    "opciones": [
+      "Comprar un teléfono celular de última generación con más memoria.",
+      "Cambiar todos los fondos de pantalla por imágenes de paisajes naturales.",
+      "Eliminar únicamente las aplicaciones que consumen mucha batería.",
+      "Establecer un período de tiempo voluntario alejados de pantallas para reconectar con el entorno físico y reducir el estrés cognitivo."
+    ],
+    "respuestaCorrecta": 3,
+    "feedback": "¡Perfecto! Desconectarse temporalmente ayuda a resetear los niveles de dopamina asociados a las notificaciones constantes y mejora las relaciones interpersonales."
+  },
+  {
+    "id": 20,
+    "categoria": "Crianza Digital",
+    "pregunta": "¿Por qué es importante que las familias practiquen el 'co-visionado' o juego compartido con los hijos?",
+    "opciones": [
+      "Para abrir canales de conversación naturales sobre los contenidos, comprender sus intereses y guiar el criterio crítico en la red.",
+      "Para vigilar de manera policiaca cada movimiento del mouse.",
+      "Para competir y demostrar quién tiene mejores habilidades técnicas.",
+      "Para acelerar el tiempo de uso de la pantalla y terminar antes."
+    ],
+    "respuestaCorrecta": 0,
+    "feedback": "¡Brillante! Estar presentes mientras consumen pantallas transforma la tecnología en un espacio de encuentro y aprendizaje guiado, en lugar de un aislamiento solitario."
+  }
+]

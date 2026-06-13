@@ -1,0 +1,56 @@
+/* PostStatsMini.css */
+
+.psm-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.psm-item {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: #ffffff;
+}
+
+.psm-sep {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.35);
+  margin: 0 0.2rem;
+}
+
+.psm-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  /* Fuerza que el emoji no use su paleta de color nativa */
+  font-style: normal;
+  -webkit-text-fill-color: initial;
+}
+
+/* Íconos con color explícito y filter para forzar visibilidad */
+.psm-eye {
+  color: #7ecfff !important;
+  /* Fallback por si el emoji override el color */
+  filter: brightness(0) saturate(100%) invert(80%) sepia(50%) 
+          saturate(400%) hue-rotate(180deg) brightness(110%);
+}
+
+.psm-like {
+  color: #a8f0c6 !important;
+  filter: brightness(0) saturate(100%) invert(85%) sepia(40%) 
+          saturate(300%) hue-rotate(100deg) brightness(105%);
+}

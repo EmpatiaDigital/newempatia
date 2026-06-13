@@ -1,0 +1,232 @@
+/* ── variables ─────────────────────────────────────────────────────────────── */
+.user-data-container {
+  --green:        #4caf50;
+  --green-light:  #e8f5e9;
+  --green-dark:   #2e7d32;
+  --purple:       rgb(106, 76, 175);
+  --purple-light: rgba(106, 76, 175, 0.12);
+  --purple-dark:  rgb(78, 55, 130);
+  --red:          #ef5350;
+  --red-light:    #fef2f2;
+  --blue:         #2196f3;
+  --blue-light:   #e3f2fd;
+  --text:         #1a1a2e;
+  --text-muted:   #6b7280;
+  --border:       #e5e7eb;
+  --bg:           #f8fafc;
+  --white:        #ffffff;
+  --radius:       12px;
+  --shadow:       0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(106,76,175,0.06);
+
+  max-width: 860px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  color: var(--text);
+}
+
+/* ── título principal ─────────────────────────────────────────────────────── */
+.user-data-container h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--green);
+  letter-spacing: -0.02em;
+}
+
+/* ── subtítulos de sección ────────────────────────────────────────────────── */
+.user-data-container h3 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: left;
+  margin: 2rem 0 0.75rem;
+  padding: 0.5rem 1rem;
+  background: var(--purple);
+  border-left: 4px solid var(--green);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── grid de stats rápidas ────────────────────────────────────────────────── */
+.ud-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.ud-stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.ud-stat-card:hover {
+  box-shadow: 0 4px 16px rgba(106,76,175,0.12);
+  transform: translateY(-2px);
+}
+
+.ud-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--purple);
+  line-height: 1;
+}
+
+.ud-stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ── lista general ────────────────────────────────────────────────────────── */
+.user-data-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ── ítems ────────────────────────────────────────────────────────────────── */
+.ud-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  border-left: 5px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+  animation: ud-slide-in 0.35s ease both;
+  animation-delay: var(--delay, 0s);
+  flex-wrap: wrap;
+}
+
+@keyframes ud-slide-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.ud-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 3px 14px rgba(0,0,0,0.09);
+}
+
+/* variantes de color */
+.ud-item--green  { background: var(--green-light);  border-color: var(--green);  color: var(--green-dark); }
+.ud-item--red    { background: var(--red-light);    border-color: var(--red);    color: #b71c1c; }
+.ud-item--purple { background: var(--purple-light); border-color: var(--purple); color: var(--purple-dark); }
+.ud-item--blue   { background: var(--blue-light);   border-color: var(--blue);   color: #1565c0; }
+
+/* ── rank, link, badge, icono ─────────────────────────────────────────────── */
+.ud-rank {
+  font-size: 0.75rem;
+  font-weight: 800;
+  opacity: 0.55;
+  min-width: 24px;
+  flex-shrink: 0;
+}
+
+.ud-link {
+  flex: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ud-link:hover { opacity: 0.72; text-decoration: underline; }
+.ud-link--green { color: var(--green-dark); }
+.ud-link--red   { color: var(--red); }
+
+.ud-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.ud-badge small { font-weight: 400; opacity: 0.7; font-size: 0.72rem; }
+.ud-badge--green  { background: var(--green);  color: #fff; }
+.ud-badge--red    { background: var(--red);    color: #fff; }
+.ud-badge--purple { background: var(--purple); color: #fff; }
+.ud-badge--blue   { background: var(--blue);   color: #fff; }
+
+.ud-icon { font-size: 1.15rem; flex-shrink: 0; }
+.ud-desc { flex: 1; font-weight: 600; }
+
+/* ── estados vacío / error / loading ─────────────────────────────────────── */
+.ud-empty {
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-muted);
+  padding: 3rem;
+}
+
+.ud-error {
+  text-align: center;
+  color: var(--red);
+  padding: 2rem;
+  font-size: 0.95rem;
+  background: var(--red-light);
+  border-radius: var(--radius);
+}
+
+/* ── responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .user-data-container {
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 16px;
+  }
+
+  .user-data-container h2 { font-size: 1.4rem; }
+  .user-data-container h3 { font-size: 0.65rem; }
+
+  .ud-stats-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+  .ud-stat-value { font-size: 1.5rem; }
+
+  .ud-link { font-size: 0.85rem; }
+  .ud-badge { font-size: 0.72rem; }
+}
+
+@media (max-width: 480px) {
+  .ud-stats-grid { grid-template-columns: 1fr 1fr; }
+  .ud-item { flex-wrap: wrap; }
+  .ud-badge { width: 100%; justify-content: center; margin-top: 0.25rem; }
+}

@@ -1,0 +1,245 @@
+/* ==========================================================================
+   POSTCOMPLETO.CSS — Empatia Club Central
+   ========================================================================== */
+
+/* General Layout */
+.post-detalle {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  background: #e6faf9;
+}
+
+/* Header con avatar */
+.post-header {
+  display: flex;
+  padding: 3px;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  flex-shrink: 0;
+}
+
+/* Portada principal */
+.preview-portada {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  height: 420px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.13);
+}
+
+/* Título y metadata */
+.post-completo-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.autor {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Epígrafe general */
+.post-detalle i {
+  display: block;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+/* Contenido del post */
+.post-detalle .contenido {
+  margin-top: 1.5rem;
+}
+
+/* Estilo para el contenido HTML inyectado */
+.imagen-fija-1200 {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.imagen-fija-1200 * {
+  max-width: 100% !important;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.imagen-fija-1200 pre,
+.imagen-fija-1200 code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* Imágenes adicionales con epígrafes */
+.imagenes-epigrafes {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.imagen-fija-1200 img {
+  width: 100%;
+  max-width: 800px;
+  max-height: 400px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+.image-post {
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.epigrafe-text {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Sección de compartir */
+.share-section {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.share-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.share-btn {
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+.share-btn:hover {
+  transform: scale(1.1);
+}
+
+.share-btn svg {
+  width: 30px;
+  height: 30px;
+}
+
+.whatsapp  { color: #25d366; }
+.facebook  { color: #1877f2; }
+.instagram { color: #e1306c; }
+
+/* ==========================================================================
+   RECUADROS DINÁMICOS
+   ========================================================================== */
+
+.recuadro-dinamico {
+  margin: 1.4rem 0;
+  padding: 1.1rem 1.4rem;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  border-left: 5px solid #e2e8f0;
+  font-size: 0.97rem;
+  line-height: 1.65;
+}
+
+.recuadro-azul     { border-left-color: #2563eb; background-color: #eff6ff; color: #1e40af; }
+.recuadro-rojo     { border-left-color: #dc2626; background-color: #fef2f2; color: #991b1b; }
+.recuadro-verde    { border-left-color: #16a34a; background-color: #f0fdf4; color: #166534; }
+.recuadro-amarillo { border-left-color: #ca8a04; background-color: #fefce8; color: #854d0e; }
+.recuadro-violeta  { border-left-color: #7c3aed; background-color: #faf5ff; color: #5b21b6; }
+
+.recuadro-dinamico p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .post-detalle {
+    padding: 1rem;
+  }
+
+  .post-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .post-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .preview-portada {
+    height: 220px;
+    max-height: 220px;
+    border-radius: 8px;
+  }
+
+  .share-buttons {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .share-btn svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .imagen-fija-1200 img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+  }
+
+  .imagenes-epigrafes {
+    gap: 1rem;
+  }
+}

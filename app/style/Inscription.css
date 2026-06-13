@@ -1,0 +1,1162 @@
+/* =============================================
+   VARIABLES 
+   ============================================= */
+:root {
+  --ins-navy:        #1e3a5f;
+  --ins-navy-deep:   #0d2340;
+  --ins-blue:        #4a90d9;
+  --ins-blue-light:  #6bb3f0;
+  --ins-blue-pale:   #a8d4f5;
+  --ins-teal:        #194542;
+  --ins-teal-light:  #e8f4f3;
+  --ins-amber:       #ffc107;
+  --ins-amber-warm:  #fff3cd;
+
+  --ins-white:       #ffffff;
+  --ins-off-white:   #f5f7fa;
+  --ins-gray-100:    #eef1f6;
+  --ins-gray-200:    #d8e0ec;
+  --ins-gray-400:    #8fa3be;
+  --ins-gray-600:    #4b6080;
+  --ins-gray-800:    #1e2d40;
+
+  --ins-success:     #10b981;
+  --ins-error:       #e53e3e;
+  --ins-whatsapp:    #25d366;
+  --ins-whatsapp-dk: #128c7e;
+
+  --ins-shadow-sm:   0 2px 8px rgba(14, 35, 64, 0.08);
+  --ins-shadow-md:   0 6px 20px rgba(14, 35, 64, 0.12);
+  --ins-shadow-lg:   0 16px 40px rgba(14, 35, 64, 0.16);
+  --ins-shadow-xl:   0 28px 60px rgba(14, 35, 64, 0.22);
+
+  --ins-radius-sm:   6px;
+  --ins-radius-md:   10px;
+  --ins-radius-lg:   16px;
+  --ins-radius-xl:   24px;
+  --ins-radius-full: 9999px;
+
+  --ins-transition:  0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+.inscription-container {
+  min-height: 100vh;
+  background: var(--ins-off-white);
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: var(--ins-gray-800);
+  line-height: 1.6;
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+.course-hero {
+  position: relative;
+  min-height: 78vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ins-navy-deep);
+}
+
+.course-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  filter: brightness(0.32) contrast(1.08);
+}
+
+.course-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to right,  rgba(8, 22, 55, 0.85) 0%, rgba(8, 22, 55, 0.4) 55%, transparent 100%),
+    linear-gradient(to top,    rgba(8, 22, 55, 0.7)  0%, transparent 55%);
+  pointer-events: none;
+}
+
+.course-hero-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 64px 5rem;
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  animation: ins-fadeUp 0.7s ease both;
+}
+
+/* =============================================
+   AVALADORES
+   ============================================= */
+.avaladores-section {
+  margin-bottom: 36px;
+  width: 100%;
+  animation: ins-slideDown 0.5s ease both;
+}
+
+.avaladores-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: var(--ins-blue-light);
+  margin-bottom: 18px;
+  padding-left: 12px;
+  border-left: 2px solid var(--ins-blue-light);
+}
+
+.avaladores-logos {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.avalador-logo-circle {
+  width: 160px;
+  height: 160px;
+  min-width: 160px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 6px 28px rgba(0, 0, 0, 0.35),
+    0 0 0 4px rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform var(--ins-transition), box-shadow var(--ins-transition);
+}
+
+.avalador-logo-circle:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.4),
+    0 0 0 4px rgba(107, 179, 240, 0.5);
+}
+
+.avalador-logo {
+  height: 118px;
+  width: auto;
+  max-width: 132px;
+  object-fit: contain;
+  display: block;
+}
+
+/* =============================================
+   HERO — título y descripción
+   ============================================= */
+.course-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 900;
+  color: var(--ins-white);
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  margin: 0 0 20px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.course-description {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 680px;
+  line-height: 1.7;
+  margin: 0 0 32px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn-conocer-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ins-blue);
+  color: var(--ins-white);
+  border: none;
+  border-radius: var(--ins-radius-sm);
+  padding: 14px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--ins-transition), transform var(--ins-transition);
+  box-shadow: 0 4px 18px rgba(74, 144, 217, 0.4);
+}
+
+.btn-conocer-mas:hover {
+  background: var(--ins-navy);
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   FORM WRAPPER — grid 2 col
+   ============================================= */
+.form-wrapper {
+  max-width: 1240px;
+  margin: -72px auto 5rem;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  position: relative;
+  z-index: 10;
+}
+
+/* =============================================
+   CARDS COMPARTIDAS
+   ============================================= */
+.course-info,
+.form-container {
+  background: var(--ins-white);
+  border-radius: var(--ins-radius-lg);
+  box-shadow: var(--ins-shadow-lg);
+  border: 1px solid var(--ins-gray-200);
+  overflow: hidden;
+}
+
+.course-info {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+}
+
+.course-info h2,
+.form-container h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ins-white);
+  padding: 1.1rem 1.6rem;
+  margin: 0;
+  letter-spacing: -0.1px;
+}
+
+.course-info h2 {
+  background: linear-gradient(100deg, var(--ins-navy-deep) 0%, var(--ins-navy) 100%);
+  border-bottom: 3px solid var(--ins-blue);
+}
+
+.form-container h2 {
+  background: linear-gradient(100deg, var(--ins-blue) 0%, var(--ins-blue-light) 100%);
+  border-bottom: 3px solid var(--ins-navy);
+}
+
+.course-info > *:not(h2),
+.form-container > *:not(h2) {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+
+.course-info > h2 + *,
+.form-container > h2 + * {
+  padding-top: 1.6rem;
+}
+
+.course-info > *:last-child,
+.form-container > *:last-child {
+  padding-bottom: 1.8rem;
+}
+
+/* =============================================
+   INFO GRID
+   ============================================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background: var(--ins-off-white);
+  border-radius: var(--ins-radius-sm);
+  border: 1px solid var(--ins-gray-200);
+  transition: border-color var(--ins-transition), transform var(--ins-transition), box-shadow var(--ins-transition);
+}
+
+.info-item:hover {
+  border-color: var(--ins-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--ins-shadow-sm);
+}
+
+.info-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--ins-blue);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.info-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ins-navy);
+}
+
+/* =============================================
+   BARRA DE CUPOS
+   ============================================= */
+.cupos-progress-wrapper {
+  margin-top: 0;
+  margin-bottom: 4px;
+  padding: 16px 18px;
+  border: 1px solid var(--ins-gray-200);
+  border-radius: var(--ins-radius-md);
+  background: var(--ins-off-white);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cupos-progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background: var(--ins-gray-200);
+  border-radius: var(--ins-radius-full);
+  overflow: hidden;
+}
+
+.cupos-progress-bar-fill {
+  height: 100%;
+  border-radius: var(--ins-radius-full);
+  background: linear-gradient(90deg, var(--ins-blue) 0%, var(--ins-blue-light) 100%);
+  transition: width 0.6s ease, background 0.4s ease;
+}
+
+.cupos-progress-bar-fill.medio {
+  background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.cupos-progress-bar-fill.urgente {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+  animation: cupos-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes cupos-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.65; }
+}
+
+.cupos-progress-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cupos-progress-texto {
+  font-size: 13px;
+  color: var(--ins-gray-600);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.cupos-progress-texto strong {
+  color: var(--ins-navy);
+  font-weight: 700;
+}
+
+.cupos-urgencia {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(220, 38, 38, 0.09);
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.28);
+  border-radius: var(--ins-radius-full);
+  padding: 3px 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  animation: cupos-pulse 1.6s ease-in-out infinite;
+}
+
+.cupos-turnos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+  border-top: 1px solid var(--ins-gray-200);
+}
+
+.cupos-turno-item {
+  font-size: 12.5px;
+  color: var(--ins-gray-600);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cupos-turno-item strong {
+  color: var(--ins-navy);
+  font-weight: 700;
+}
+
+.cupos-restantes {
+  font-size: 0.78rem;
+  color: var(--ins-blue);
+  font-weight: 700;
+  background: rgba(74, 144, 217, 0.1);
+  padding: 3px 10px;
+  border-radius: var(--ins-radius-full);
+  border: 1px solid rgba(74, 144, 217, 0.25);
+  margin-left: auto;
+  white-space: nowrap;
+  transition: background var(--ins-transition);
+}
+
+/* =============================================
+   GALERÍA
+   ============================================= */
+.gallery {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ins-gray-200);
+}
+
+.gallery h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ins-navy);
+  margin-bottom: 14px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--ins-radius-sm);
+  border: 2px solid var(--ins-gray-200);
+  cursor: pointer;
+  transition: transform var(--ins-transition), box-shadow var(--ins-transition), border-color var(--ins-transition);
+}
+
+.gallery-image:hover {
+  transform: scale(1.04);
+  box-shadow: var(--ins-shadow-md);
+  border-color: var(--ins-blue);
+}
+
+/* =============================================
+   FORMULARIO
+   ============================================= */
+.inscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 1.8rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ins-navy);
+  letter-spacing: 0.2px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--ins-gray-200);
+  border-radius: var(--ins-radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ins-gray-800);
+  background: var(--ins-off-white);
+  transition: border-color var(--ins-transition), box-shadow var(--ins-transition), background var(--ins-transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--ins-blue);
+  background: var(--ins-white);
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.14);
+}
+
+.form-group input.error {
+  border-color: var(--ins-error);
+  background: rgba(229, 62, 62, 0.04);
+}
+
+.error-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ins-error);
+}
+
+/* ── Radio turnos ── */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--ins-gray-200);
+  border-radius: var(--ins-radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ins-gray-800);
+  background: var(--ins-off-white);
+  transition: border-color var(--ins-transition), background var(--ins-transition), transform var(--ins-transition);
+  gap: 10px;
+}
+
+.radio-label:hover:not(.turno-lleno) {
+  border-color: var(--ins-blue);
+  background: var(--ins-white);
+  transform: translateX(3px);
+}
+
+.radio-label input[type="radio"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--ins-blue);
+  flex-shrink: 0;
+}
+
+.radio-label input[type="radio"]:checked + span {
+  font-weight: 700;
+  color: var(--ins-navy);
+}
+
+.turno-lleno {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.turno-lleno span {
+  color: var(--ins-gray-400);
+  text-decoration: line-through;
+}
+
+/* ── Checkbox ── */
+.checkbox-group {
+  padding: 14px 16px;
+  background: var(--ins-off-white);
+  border-radius: var(--ins-radius-sm);
+  border: 1px solid var(--ins-gray-200);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  min-width: 17px;
+  margin-top: 2px;
+  accent-color: var(--ins-blue);
+  cursor: pointer;
+}
+
+.checkbox-label span {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ins-gray-600);
+}
+
+/* ── Botón submit ── */
+.btn-submit {
+  padding: 1.1rem 2rem;
+  background: linear-gradient(100deg, var(--ins-navy) 0%, var(--ins-blue) 100%);
+  color: var(--ins-white);
+  border: none;
+  border-radius: var(--ins-radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: opacity var(--ins-transition), transform var(--ins-transition), box-shadow var(--ins-transition);
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.28);
+  margin-top: 10px;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.btn-submit:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.32);
+}
+
+.btn-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =============================================
+   SIN CURSOS / CURSO LLENO
+   ============================================= */
+.no-courses-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background:
+    linear-gradient(to right,  rgba(8, 22, 55, 0.96) 0%, rgba(14, 35, 95, 0.88) 55%, rgba(30, 58, 95, 0.82) 100%),
+    linear-gradient(135deg, var(--ins-navy-deep) 0%, var(--ins-navy) 100%);
+}
+
+.no-courses-content {
+  background: var(--ins-white);
+  border-radius: var(--ins-radius-xl);
+  padding: 56px 44px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: var(--ins-shadow-xl);
+  text-align: center;
+  animation: ins-scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  border-top: 4px solid var(--ins-blue);
+}
+
+.no-courses-icon {
+  display: inline-block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ins-white);
+  background: linear-gradient(100deg, var(--ins-navy) 0%, var(--ins-blue) 100%);
+  padding: 10px 22px;
+  border-radius: var(--ins-radius-full);
+  letter-spacing: 0.5px;
+  margin-bottom: 28px;
+}
+
+.no-courses-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: var(--ins-navy);
+  margin-bottom: 18px;
+  line-height: 1.15;
+}
+
+.no-courses-text {
+  font-size: 1rem;
+  color: var(--ins-gray-600);
+  margin-bottom: 14px;
+  line-height: 1.65;
+}
+
+.no-courses-subtext {
+  font-size: 0.95rem;
+  color: var(--ins-gray-600);
+  margin-bottom: 36px;
+  line-height: 1.65;
+}
+
+.no-courses-subtext strong {
+  color: var(--ins-blue);
+}
+
+.no-courses-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 32px;
+  background: linear-gradient(100deg, var(--ins-whatsapp-dk) 0%, var(--ins-whatsapp) 100%);
+  color: var(--ins-white);
+  border: none;
+  border-radius: var(--ins-radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: transform var(--ins-transition), box-shadow var(--ins-transition), opacity var(--ins-transition);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  opacity: 0.93;
+}
+
+.btn-volver {
+  padding: 14px 32px;
+  background: var(--ins-white);
+  color: var(--ins-navy);
+  border: 1.5px solid var(--ins-navy);
+  border-radius: var(--ins-radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background var(--ins-transition), color var(--ins-transition), transform var(--ins-transition);
+}
+
+.btn-volver:hover {
+  background: var(--ins-navy);
+  color: var(--ins-white);
+  transform: translateY(-2px);
+}
+
+.contact-info {
+  padding-top: 28px;
+  border-top: 1px solid var(--ins-gray-200);
+  color: var(--ins-gray-600);
+}
+
+.contact-info p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.phone-link {
+  color: var(--ins-blue);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Playfair Display', Georgia, serif;
+  transition: color var(--ins-transition);
+}
+
+.phone-link:hover {
+  color: var(--ins-navy);
+}
+
+/* ── Loading ── */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ins-gray-600);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* =============================================
+   ANIMACIONES
+   ============================================= */
+@keyframes ins-fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ins-slideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ins-scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* =============================================
+   ACCESIBILIDAD
+   ============================================= */
+:focus-visible {
+  outline: 2px solid var(--ins-blue);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 768px) {
+  select,
+  textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    font-size: 16px !important;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — tablet grande (≤1100px)
+   ============================================= */
+@media (max-width: 1100px) {
+  .form-wrapper {
+    padding: 0 36px;
+    gap: 22px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — tablet (≤991px)
+   ============================================= */
+@media (max-width: 991px) {
+  .form-wrapper {
+    grid-template-columns: 1fr;
+    margin-top: -60px;
+    padding: 0 28px;
+  }
+
+  .course-info {
+    position: relative;
+    top: 0;
+  }
+
+  .course-hero-overlay {
+    padding: 4rem 40px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — tablet chico (≤768px)
+   ============================================= */
+@media (max-width: 768px) {
+  .course-hero {
+    min-height: 65vh;
+  }
+
+  .course-hero-overlay {
+    padding: 3rem 28px;
+  }
+
+  .course-title {
+    font-size: clamp(1.7rem, 6vw, 2.5rem);
+  }
+
+  .avalador-logo-circle {
+    width: 120px;
+    height: 120px;
+    min-width: 120px;
+  }
+
+  .avalador-logo {
+    height: 88px;
+    max-width: 100px;
+  }
+
+  .form-wrapper {
+    padding: 0 20px;
+    margin-top: -48px;
+    gap: 18px;
+  }
+
+  .course-info h2,
+  .form-container h2 {
+    font-size: 1.15rem;
+    padding: 1rem 1.4rem;
+  }
+
+  .course-info > *:not(h2),
+  .form-container > *:not(h2) {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .no-courses-content {
+    padding: 40px 28px;
+  }
+
+  .no-courses-title {
+    font-size: 1.55rem;
+  }
+
+  .cupos-turnos {
+    gap: 14px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — mobile (≤600px)
+   ============================================= */
+@media (max-width: 600px) {
+  .course-hero {
+    min-height: 58vh;
+  }
+
+  .course-hero-overlay {
+    padding: 2.5rem 20px;
+    align-items: flex-start;
+  }
+
+  .avaladores-section {
+    width: 100%;
+  }
+
+  .avaladores-logos {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .avalador-logo-circle {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+  }
+
+  .avalador-logo {
+    height: 66px;
+    max-width: 78px;
+  }
+
+  .course-title {
+    font-size: clamp(1.5rem, 7.5vw, 2.1rem);
+    margin-bottom: 14px;
+  }
+
+  .course-description {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+  }
+
+  .form-wrapper {
+    padding: 0 14px;
+    margin-top: -36px;
+    margin-bottom: 3rem;
+    gap: 14px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cupos-progress-wrapper {
+    padding: 14px;
+  }
+
+  .cupos-progress-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cupos-urgencia {
+    align-self: flex-start;
+  }
+
+  .cupos-turnos {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .no-courses-content {
+    padding: 32px 20px;
+  }
+
+  .no-courses-title {
+    font-size: 1.35rem;
+  }
+
+  .btn-whatsapp,
+  .btn-volver {
+    font-size: 13px;
+    padding: 13px 24px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .gallery-image {
+    height: 90px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — mobile pequeño (≤400px)
+   ============================================= */
+@media (max-width: 400px) {
+  .form-wrapper {
+    padding: 0 10px;
+  }
+
+  .avaladores-logos {
+    gap: 10px;
+  }
+
+  .avalador-logo-circle {
+    width: 76px;
+    height: 76px;
+    min-width: 76px;
+  }
+
+  .avalador-logo {
+    height: 54px;
+    max-width: 64px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .no-courses-title {
+    font-size: 1.2rem;
+  }
+
+  .course-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* ============================================================
+   DESCUENTO & CÓDIGO PROMO — agregar al final de Inscription.css
+   ============================================================ */
+
+/* Contenedor principal del banner */
+.descuento-banner {
+  margin: 18px 0 10px 0;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 60%, #fde68a 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.18);
+  animation: descuentoPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes descuentoPulse {
+  0%, 100% { box-shadow: 0 4px 18px rgba(245, 158, 11, 0.18); }
+  50%       { box-shadow: 0 6px 28px rgba(245, 158, 11, 0.38); }
+}
+
+/* Fila superior: badge + textos */
+.descuento-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.descuento-porcentaje {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #b45309;
+  letter-spacing: -1px;
+  line-height: 1;
+  background: #fde68a;
+  border-radius: 8px;
+  padding: 4px 12px;
+  border: 1.5px solid #f59e0b;
+}
+
+.descuento-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #92400e;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Precios tachado / final */
+.descuento-precios {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.precio-original {
+  font-size: 0.9rem;
+  color: #78716c;
+}
+
+.precio-original s {
+  color: #a8a29e;
+  font-weight: 500;
+}
+
+.precio-final {
+  font-size: 1.05rem;
+  color: #15803d;
+}
+
+.precio-final strong {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #166534;
+}
+
+/* Aviso código promo */
+.promo-aviso {
+  font-size: 0.88rem;
+  color: #92400e;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 8px;
+  padding: 10px 14px;
+  border-left: 3px solid #f59e0b;
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .descuento-porcentaje {
+    font-size: 1.5rem;
+  }
+  .precio-final strong {
+    font-size: 1.1rem;
+  }
+}
+/* Variante roja para aviso de posible código promo */
+.promo-aviso--posible {
+  color: #991b1b;
+  background: rgba(254, 226, 226, 0.75);
+  border-left: 3px solid #dc2626;
+}
+
+.promo-aviso--posible strong {
+  color: #7f1d1d;
+}
+
+.promo-aviso--posible em {
+  font-style: normal;
+  font-weight: 600;
+  color: #b91c1c;
+}

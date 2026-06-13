@@ -1,0 +1,278 @@
+/* ── Tokens ─────────────────────────────────────────────────────────────── */
+.register-page {
+  --clr-bg:          #f1f5f9;
+  --clr-card:        #ffffff;
+  --clr-spine-a:     #10b981;
+  --clr-spine-b:     #7c3aed;
+  --clr-primary:     #10b981;
+  --clr-primary-dk:  #059669;
+  --clr-accent:      #7c3aed;
+  --clr-amber:       #f59e0b;
+  --clr-text:        #1e293b;
+  --clr-muted:       #64748b;
+  --clr-border:      #e2e8f0;
+  --clr-input-bg:    #f8fafc;
+  --clr-label:       #7c3aed;
+  --clr-required:    #ef4444;
+  --radius-card:     20px;
+  --radius-input:    10px;
+  --shadow-card:     0 8px 40px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(0,0,0,0.06);
+  --font:            "Inter", system-ui, -apple-system, sans-serif;
+  --transition:      0.2s ease;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-bg);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(16,185,129,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(124,58,237,0.10) 0%, transparent 55%);
+  font-family: var(--font);
+  padding: 2rem 1rem;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────── */
+.register-card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 560px;
+  background: var(--clr-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* ── Spine ──────────────────────────────────────────────────────────────── */
+.register-spine {
+  width: 6px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    180deg,
+    var(--clr-spine-a) 0%,
+    var(--clr-spine-b) 100%
+  );
+}
+
+/* ── Inner ──────────────────────────────────────────────────────────────── */
+.register-inner {
+  flex: 1;
+  padding: 2.5rem 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.register-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.register-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-primary);
+}
+
+.register-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--clr-text);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.register-subtitle {
+  font-size: 0.875rem;
+  color: var(--clr-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Form ───────────────────────────────────────────────────────────────── */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.register-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── Field ──────────────────────────────────────────────────────────────── */
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.register-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--clr-label);
+  cursor: pointer;
+}
+
+.register-label-icon {
+  display: flex;
+  align-items: center;
+  color: var(--clr-accent);
+  opacity: 0.8;
+}
+
+.register-required {
+  color: var(--clr-required);
+  margin-left: 1px;
+}
+
+.register-input-wrap {
+  position: relative;
+}
+
+.register-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 0.875rem;
+  background: var(--clr-input-bg);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-input);
+  font-size: 0.925rem;
+  font-family: var(--font);
+  color: var(--clr-text);
+  transition: border-color var(--transition), box-shadow var(--transition),
+    background var(--transition);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.register-input::placeholder {
+  color: #b0bec5;
+  font-size: 0.875rem;
+}
+
+.register-input:hover {
+  border-color: #c4b5fd;
+}
+
+.register-input:focus {
+  border-color: var(--clr-accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12),
+              0 0 0 1.5px var(--clr-accent);
+}
+
+/* ── Submit button ──────────────────────────────────────────────────────── */
+.register-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  height: 48px;
+  border: none;
+  border-radius: var(--radius-input);
+  background: linear-gradient(
+    135deg,
+    var(--clr-primary) 0%,
+    var(--clr-accent) 100%
+  );
+  color: #fff;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition),
+    box-shadow var(--transition);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.30);
+}
+
+.register-submit:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.38);
+}
+
+.register-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.register-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.register-submit:focus-visible {
+  outline: 3px solid var(--clr-amber);
+  outline-offset: 2px;
+}
+
+/* ── Spinner ────────────────────────────────────────────────────────────── */
+@keyframes register-spin {
+  to { transform: rotate(360deg); }
+}
+
+.register-spin {
+  animation: register-spin 0.8s linear infinite;
+}
+
+/* ── Login hint ─────────────────────────────────────────────────────────── */
+.register-login-hint {
+  font-size: 0.845rem;
+  color: var(--clr-muted);
+  text-align: center;
+  margin: 0;
+}
+
+.register-login-link {
+  color: var(--clr-accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.register-login-link:hover {
+  color: var(--clr-primary);
+  border-color: var(--clr-primary);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .register-inner {
+    padding: 2rem 1.5rem 1.75rem;
+  }
+
+  .register-row {
+    grid-template-columns: 1fr;
+  }
+
+  .register-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register-spin {
+    animation: none;
+  }
+
+  .register-submit,
+  .register-input,
+  .register-login-link {
+    transition: none;
+  }
+}

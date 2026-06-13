@@ -1,0 +1,613 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+/* =============================================
+   WRAPPER PÁGINA
+   ============================================= */
+.actividades-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+/* =============================================
+   HEADER ROW
+   ============================================= */
+.actividades-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.actividades-titulo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #1e3a5f;
+  margin: 0;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.actividades-titulo-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #4a90d9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.actividades-titulo-divider {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #4a90d9, #6bb3f0);
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+.actividades-btn-nueva {
+  padding: 10px 20px;
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.actividades-btn-nueva:hover {
+  background: #4a90d9;
+}
+
+/* =============================================
+   GRID
+   ============================================= */
+.actividades-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.actividades-empty {
+  font-family: 'DM Sans', sans-serif;
+  color: #7a8fa6;
+  text-align: center;
+  padding: 48px 0;
+  font-size: 15px;
+}
+
+/* =============================================
+   CARD
+   ============================================= */
+.actividad-card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(20, 45, 90, 0.10);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e8eef5;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.actividad-card:hover {
+  box-shadow: 0 8px 36px rgba(20, 45, 90, 0.16);
+  transform: translateY(-2px);
+}
+
+/* --- Admin buttons --- */
+.actividad-card-admin {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.actividad-admin-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: opacity 0.2s, transform 0.15s;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.actividad-admin-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.08);
+}
+
+/* =============================================
+   HERO: foto izquierda + título derecha
+   ============================================= */
+.actividad-hero {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 180px;
+}
+
+.actividad-hero-img {
+  width: 220px;
+  min-width: 220px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #c8daf0;
+}
+
+.actividad-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Imagen más clara */
+  opacity: 1;
+  filter: brightness(1.15) saturate(1.05);
+  transition: filter 0.3s;
+}
+
+.actividad-hero-img img:hover {
+  filter: brightness(1.22) saturate(1.1);
+}
+
+.actividad-hero-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 24px 20px 22px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #0d2340 100%);
+}
+
+/* Título llamativo */
+.actividad-card-titulo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 14px;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+  word-break: break-word;
+  /* Separación del botón admin */
+  padding-right: 44px;
+}
+
+/* Badge fecha dentro del hero */
+.actividad-fecha-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(74, 144, 217, 0.2);
+  border: 1px solid rgba(107, 179, 240, 0.4);
+  border-radius: 5px;
+  padding: 5px 11px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6bb3f0;
+  width: fit-content;
+  letter-spacing: 0.3px;
+}
+
+/* =============================================
+   BODY
+   ============================================= */
+.actividad-card-body {
+  padding: 20px 24px 8px;
+}
+
+/* Badge de hora destacado */
+.actividad-hora-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #4a90d9 0%, #6bb3f0 100%);
+  color: #fff;
+  border-radius: 8px;
+  padding: 9px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 14px rgba(74, 144, 217, 0.38);
+  width: fit-content;
+}
+
+.actividad-hora-badge-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.actividad-hora-badge-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.actividad-hora-badge-valor {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Filas de info */
+.actividad-info-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.actividad-info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f4f8;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+}
+
+.actividad-info-row:last-of-type {
+  border-bottom: none;
+}
+
+.actividad-info-label {
+  font-weight: 600;
+  color: #1e3a5f;
+  min-width: 88px;
+  font-size: 12px;
+  letter-spacing: 0.1px;
+  flex-shrink: 0;
+}
+
+.actividad-info-value {
+  color: #4a6fa5;
+  font-weight: 400;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* =============================================
+   ACCIONES
+   ============================================= */
+.actividad-card-actions {
+  padding: 16px 24px 22px;
+  display: flex;
+  gap: 10px;
+}
+
+.actividad-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+  border: none;
+}
+
+.actividad-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.actividad-btn-compartir {
+  background: #eef4fb;
+  color: #1e3a5f;
+  border: 1.5px solid #c2d9f0;
+}
+
+.actividad-btn-compartir:hover:not(:disabled) {
+  background: #dbeaf7;
+  border-color: #4a90d9;
+}
+
+.actividad-btn-asistir {
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.actividad-btn-asistir:hover {
+  background: #4a90d9;
+}
+
+/* =============================================
+   PAGINACIÓN
+   ============================================= */
+.actividades-paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 0;
+}
+
+.actividades-paginacion-btn {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 6px;
+  border: 1.5px solid #c2d9f0;
+  background: #fff;
+  color: #1e3a5f;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.actividades-paginacion-btn:hover:not(:disabled) {
+  background: #eef4fb;
+  border-color: #4a90d9;
+}
+
+.actividades-paginacion-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.actividades-paginacion-btn.activa {
+  background: #1e3a5f;
+  border-color: #1e3a5f;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* =============================================
+   MODAL FORM (crear / editar)
+   ============================================= */
+.act-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 22, 55, 0.72);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  animation: actFadeIn 0.3s ease forwards;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.act-modal-card {
+  background: #fff;
+  width: 480px;
+  max-width: 95vw;
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(20, 45, 90, 0.24);
+  position: relative;
+  padding: 36px 32px 28px;
+  animation: actFadeIn 0.35s ease forwards;
+  box-sizing: border-box;
+}
+
+.act-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c0392b;
+  border: none;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.act-modal-close:hover {
+  background: #96281b;
+}
+
+.act-modal-titulo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin: 0 0 20px;
+  padding-right: 36px;
+}
+
+.act-modal-error {
+  background: #fdf0ee;
+  border: 1px solid #e8b4ae;
+  border-radius: 6px;
+  color: #c0392b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.act-modal-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.act-modal-row {
+  display: flex;
+  gap: 12px;
+}
+
+.act-modal-row .act-modal-label {
+  flex: 1;
+}
+
+.act-modal-label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e3a5f;
+  letter-spacing: 0.1px;
+}
+
+.act-modal-input,
+.act-modal-textarea {
+  padding: 9px 12px;
+  border: 1.5px solid #c2d9f0;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #1e3a5f;
+  background: #f7fafd;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.act-modal-input:focus,
+.act-modal-textarea:focus {
+  border-color: #4a90d9;
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+  background: #fff;
+}
+
+.act-modal-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.act-modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  justify-content: flex-end;
+}
+
+.act-modal-btn {
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.act-modal-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.act-modal-btn--cancel {
+  background: #eef4fb;
+  color: #1e3a5f;
+  border: 1.5px solid #c2d9f0;
+}
+
+.act-modal-btn--cancel:hover {
+  background: #dbeaf7;
+}
+
+.act-modal-btn--save {
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.act-modal-btn--save:hover:not(:disabled) {
+  background: #4a90d9;
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (≤640px)
+   ============================================= */
+@media (max-width: 640px) {
+  .actividades-wrapper {
+    padding: 32px 16px 48px;
+  }
+
+  .actividades-titulo {
+    font-size: 1.55rem;
+  }
+
+  /* Card hero en mobile: foto arriba */
+  .actividad-hero {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .actividad-hero-img {
+    width: 100%;
+    min-width: 100%;
+    height: 180px;
+  }
+
+  .actividad-hero-info {
+    padding: 18px 18px 16px;
+  }
+
+  .actividad-card-titulo {
+    font-size: 1.2rem;
+    padding-right: 0;
+  }
+
+  .actividad-card-body {
+    padding: 16px 18px 6px;
+  }
+
+  .actividad-card-actions {
+    padding: 12px 18px 18px;
+    flex-direction: column;
+  }
+
+  .act-modal-card {
+    padding: 28px 20px 22px;
+  }
+
+  .act-modal-row {
+    flex-direction: column;
+  }
+}
+
+/* =============================================
+   ANIMACIÓN
+   ============================================= */
+@keyframes actFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

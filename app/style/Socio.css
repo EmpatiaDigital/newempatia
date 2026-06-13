@@ -1,0 +1,372 @@
+* {
+  box-sizing: border-box;
+}
+
+.socio-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 3rem;
+  background: #eef2f7;
+  min-height: 100vh;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* ─── Card base ─── */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 0.5px solid rgba(0,0,0,0.07);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  width: 320px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.11);
+}
+
+/* ─── Card header variants ─── */
+.card-header {
+  text-align: center;
+  padding: 22px 20px 18px;
+}
+
+.card-header h1 {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: #ffffff;
+  margin: 0 0 14px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.card-header-green  { background: linear-gradient(135deg, #064e3b, #065f46); }
+.card-header-green h1  { background: #047857; box-shadow: 0 2px 8px rgba(4,120,87,0.4); }
+
+.card-header-orange { background: linear-gradient(135deg, #7f1d1d, #991b1b); }
+.card-header-orange h1 { background: #b91c1c; box-shadow: 0 2px 8px rgba(185,28,28,0.4); }
+
+.card-header-blue   { background: linear-gradient(135deg, #0f2040, #1a3a6b); }
+.card-header-blue h1   { background: #1e4d9b; box-shadow: 0 2px 8px rgba(30,77,155,0.4); }
+
+.card-header p {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  margin: 8px 0 0;
+  letter-spacing: 0.3px;
+}
+
+.card-header p strong {
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+
+.card-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 8px auto 0;
+  display: block;
+  border: 2px solid rgba(255,255,255,0.25);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+
+/* ─── Card body ─── */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 20px;
+}
+
+.card-body p {
+  font-size: 13.5px;
+  color: #374151;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.card-body p strong {
+  color: #0f172a;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.card-body h3 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #b91c1c;
+  font-weight: 600;
+  margin: 12px 0 4px;
+}
+
+.card-body input[type="text"],
+.card-body input[type="file"] {
+  width: 100%;
+  padding: 8px 11px;
+  font-size: 13px;
+  border: 0.5px solid #d1d5db;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #0f172a;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.card-body input[type="text"]:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+  background: #fff;
+}
+
+/* ─── Alert ─── */
+.alert-red {
+  color: #991b1b;
+  font-weight: 500;
+  font-size: 13px;
+  background: #fef2f2;
+  border: 0.5px solid #fca5a5;
+  border-radius: 8px;
+  padding: 9px 13px;
+  margin-top: 4px;
+}
+
+/* ─── Buttons ─── */
+.card-changes,
+.card-footer button {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #0f2040;
+  color: #93c5fd;
+  border: 0.5px solid rgba(59,130,246,0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  letter-spacing: 0.2px;
+}
+
+.card-changes:hover,
+.card-footer button:hover {
+  background: #1e3a5f;
+  color: #bfdbfe;
+}
+
+.card-changes:disabled,
+.card-footer button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.card-footer {
+  padding: 12px 20px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  border-top: 0.5px solid #f1f5f9;
+}
+
+/* ─── Modern card wrapper ─── */
+.card-header-modern-complete {
+  background: #ffffff;
+  width: 320px;
+  border-radius: 16px;
+  border: 0.5px solid rgba(0,0,0,0.07);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-header-modern-complete:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.11);
+}
+
+/* ─── Modern card header (carnet) ─── */
+.card-header-modern {
+  background: linear-gradient(155deg, #0a0f1e 0%, #0f2040 45%, #6b1010 100%);
+  padding: 22px 20px 16px;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header-modern::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(59,130,246,0.06);
+  border: 1px solid rgba(59,130,246,0.10);
+  pointer-events: none;
+}
+
+.card-header-modern::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: -20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(107,16,16,0.15);
+  pointer-events: none;
+}
+
+.card-header-modern h1 {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #7f1d1d, #b91c1c);
+  color: #ffffff;
+  margin: 12px 0 4px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 10px rgba(127,29,29,0.5);
+}
+
+.card-header-modern img.card-avatar {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.20);
+  background: #1e2d45;
+  margin: 10px auto 10px;
+  display: block;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.card-header-modern h2 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 6px 0 4px;
+  color: #f1f5f9;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.2px;
+}
+
+.card-header-modern strong.activo {
+  color: #34d399;
+  font-weight: 600;
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-header-modern strong.inactivo {
+  color: #f87171;
+  font-weight: 600;
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Carnet labels ─── */
+.carnet-label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #475569;
+  margin: 8px 0 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.carnet-divider {
+  width: 60%;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: 10px auto 4px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Logo cuadrado en carnet ─── */
+.logo-cuadrado {
+  width: 100px;
+  height: 64px;
+  object-fit: contain;
+  margin: 10px auto 8px;
+  display: block;
+  position: relative;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* ─── Botón captura ─── */
+.btn-captura {
+  margin: 0;
+  padding: 10px 18px;
+  background: #0f2040;
+  color: #93c5fd;
+  font-weight: 500;
+  font-size: 13px;
+  border: none;
+  border-top: 0.5px solid rgba(59,130,246,0.12);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  letter-spacing: 0.3px;
+}
+
+.btn-captura:hover {
+  background: #1e3a5f;
+  color: #bfdbfe;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 700px) {
+  .cards-container {
+    gap: 16px;
+  }
+  .card-header-modern-complete,
+  .card {
+    width: 100%;
+    max-width: 380px;
+  }
+}
