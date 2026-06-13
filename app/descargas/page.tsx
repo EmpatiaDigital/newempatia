@@ -14,7 +14,7 @@ import AdminDrawer from "../components/AdminDrawer";
 import { useAuth } from "../context/AuthContext";
 import type { Resource, ResourceType } from "../types/recursos";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://empatia-dominio-back.vercel.app";
 const POR_PAGINA = 6;
 
 type FilterValue = "todos" | ResourceType;
