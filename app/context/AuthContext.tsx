@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     username: string
   ): Promise<void> => {
     const res = await fetch(
-      "http://localhost:5000/api/auth/login",
+      "https://empatia-dominio-back.vercel.app/api/auth/login",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
