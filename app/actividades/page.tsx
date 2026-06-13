@@ -23,7 +23,7 @@ interface Actividad {
 const ACTIVIDADES_POR_PAGINA = 3;
 const TELEFONO_WHATSAPP      = "543413559329";
 const URL_SITIO              = "https://empatidigital.com.ar/actividades";
-const API_URL                = "http://localhost:5000/api/actividades";
+const API_URL                = "https://empatia-dominio-back.vercel.app/api/actividades";
 
 // ─────────────────────────────────────────────────
 // HELPERS
