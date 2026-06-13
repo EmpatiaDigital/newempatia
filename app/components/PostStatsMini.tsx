@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 // Ruta relativa clásica
 import "../style/PostStatsMini.css";
 
-const API = "http://localhost:5000/api";
+const API = "https://empatia-dominio-back.vercel.app/api";
 
 // ── 1. DEFINICIÓN DE INTERFACES (Soluciona la inferencia a 'never') ──
 export interface PostStatsMiniData {
