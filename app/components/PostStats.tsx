@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "../style/PostStats.css";
 
-const API = "http://localhost:5000/api";
+const API = "https://empatia-dominio-back.vercel.app/api";
 
 export interface FullStatsData {
   vistas: number;
