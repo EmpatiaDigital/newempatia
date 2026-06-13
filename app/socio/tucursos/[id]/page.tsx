@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import "../../../style/Tuscursos.css";
 
-const API = 'http://localhost:5000';
+const API = 'https://empatia-dominio-back.vercel.app';
 
 // ─────────────────────────────────────────────────
 // TIPOS
