@@ -8,8 +8,6 @@ import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import Swal from "sweetalert2";
 import "../style/Editor.css";
-
-
 // ─────────────────────────────────────────────────
 // TIPOS
 // ─────────────────────────────────────────────────
@@ -331,8 +329,8 @@ export default function CrearPost() {
 
     let cleanedUrl = url;
     const isExternal = /^https?:\/\//i.test(url);
-    if (!isExternal && url.startsWith("http://localhost:3000")) {
-      cleanedUrl = url.replace("http://localhost:3000", "");
+    if (!isExternal && url.startsWith("https://www.empatiadigital.com.ar")) {
+      cleanedUrl = url.replace("https://www.empatiadigital.com.ar", "");
     }
 
     editor?.chain().focus().extendMarkRange("link").setLink({ href: cleanedUrl }).run();
