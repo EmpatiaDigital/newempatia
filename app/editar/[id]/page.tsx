@@ -91,7 +91,7 @@ const optimizarContenido = (url: string): string => optimizarCloudinary(url, "f_
 // ─────────────────────────────────────────────────
 // CONSTANTES
 // ─────────────────────────────────────────────────
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://empatia-dominio-back.vercel.app/api";
 
 const COLORES_RECUADRO: ColorRecuadro[] = [
   { nombre: "Azul",     value: "azul"     },
@@ -366,8 +366,8 @@ export default function EditPost() {
     if (url === "") { editor?.chain().focus().unsetLink().run(); return; }
 
     let cleanedUrl = url;
-    if (!/^https?:\/\//i.test(url) && url.startsWith("http://localhost:3000")) {
-      cleanedUrl = url.replace("http://localhost:3000", "");
+    if (!/^https?:\/\//i.test(url) && url.startsWith("https://empatiadigital.com.ar")) {
+      cleanedUrl = url.replace("https://empatiadigital.com.ar", "");
     }
 
     editor?.chain().focus().extendMarkRange("link").setLink({ href: cleanedUrl }).run();
