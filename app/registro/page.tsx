@@ -32,7 +32,7 @@ export default function SocioRegister() {
 
     try {
       const res = await fetch(
-        "http://localhost:5000/api/register",
+        "https://empatia-dominio-back.vercel.app/api/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
