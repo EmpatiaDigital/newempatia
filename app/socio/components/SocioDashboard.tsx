@@ -11,7 +11,7 @@ import socioLogo from '../../assets/empatialog.jpeg';
 import html2canvas from 'html2canvas';
 import '../../style/Socio.css';
 
-const API = 'http://localhost:5000';
+const API = 'https://empatia-dominio-back.vercel.app';
 
 // ── Tipos ─────────────────────────────────────────────────────────────────────
 
