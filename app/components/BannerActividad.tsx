@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "../style/BannerActividad.css";
 
-const API_URL = "http://localhost:5000/api/actividades";
+const API_URL = "https://empatia-dominio-back.vercel.app/api/actividades";
 
 interface ActividadData {
   titulo: string;
