@@ -1,9 +1,5 @@
 "use client";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// CuotasPage.tsx — con soporte de comprobantes en revisión para superadmin
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../context/AuthContext";
@@ -69,7 +65,7 @@ interface ParametrosCuota {
 
 // ── Constantes ────────────────────────────────────────────────────────────────
 
-const API = "http://localhost:5000";
+const API = "https://empatia-dominio-back.vercel.app";
 const HOY = new Date();
 
 const MESES_MOSTRAR = (() => {
