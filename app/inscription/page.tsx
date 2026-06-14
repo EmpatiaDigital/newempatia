@@ -11,7 +11,7 @@ import logo1 from '../assets/logo1.png';
 import logo2 from '../assets/logo2.png';
 import logo3 from '../assets/empatialog.jpeg';
 
-const BASE_URL = 'https://empatia-dominio-back.vercel.app/api';
+const BASE_URL = 'https://newempatiabackend.vercel.app/api';
 
 const TURNO_VALUE_MAP: Record<string, string> = {
   manana:     'mañana',
