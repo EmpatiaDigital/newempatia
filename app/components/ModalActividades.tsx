@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import "../style/ModalActividades.css";
 
-const API_URL = "https://empatia-dominio-back.vercel.app/api/actividades";
+const API_URL = "https://newempatiabackend.vercel.app/api/actividades";
 const TELEFONO_WHATSAPP = "543413559329";
 const URL_SITIO         = "https://empatiadigital.com.ar/actividades";
 
