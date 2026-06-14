@@ -65,7 +65,7 @@ interface ParametrosCuota {
 
 // ── Constantes ────────────────────────────────────────────────────────────────
 
-const API = "https://empatia-dominio-back.vercel.app";
+const API = "https://newempatiabackend.vercel.app";
 const HOY = new Date();
 
 const MESES_MOSTRAR = (() => {
