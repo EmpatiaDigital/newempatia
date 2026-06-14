@@ -210,3 +210,9 @@
     gap: 12px;
   }
 }
+.admin-faqs-input,
+.admin-faqs-textarea,
+.admin-faqs-input-small {
+  background: #ffffff;
+  color: #000000;
+}
