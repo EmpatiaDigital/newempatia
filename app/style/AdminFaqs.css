@@ -177,3 +177,36 @@
   background: #ff5d7a;
   color: #ffffff;
 }
+
+/* ─────────────────────────────────────────────────
+   RESPONSIVE - MOBILE
+───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .admin-faqs-container {
+    padding: 0 12px;
+  }
+
+  .admin-faqs-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-faqs-item-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .admin-faqs-edit-button,
+  .admin-faqs-toggle-button,
+  .admin-faqs-delete-button {
+    flex: 1;
+    text-align: center;
+  }
+
+  .admin-faqs-form-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
