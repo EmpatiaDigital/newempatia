@@ -1,17 +1,16 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 
 const GA_MEASUREMENT_ID = 'G-1PQVGSKJGE';
 
-
-export default function GoogleAnalytics() {
+function GoogleAnalyticsInner() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (typeof window.gtag !== 'function') return;
+    if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
 
     const url = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
 
@@ -21,4 +20,12 @@ export default function GoogleAnalytics() {
   }, [pathname, searchParams]);
 
   return null;
+}
+
+export default function GoogleAnalytics() {
+  return (
+    <Suspense fallback={null}>
+      <GoogleAnalyticsInner />
+    </Suspense>
+  );
 }
