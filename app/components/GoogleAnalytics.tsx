@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 const GA_MEASUREMENT_ID = 'G-1PQVGSKJGE';
 
+
 export default function GoogleAnalytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
