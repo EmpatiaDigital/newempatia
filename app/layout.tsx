@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import "./globals.css";
+import { Suspense } from "react";
 
 // ─── Fuentes con preload automático de Next.js ───────────────────────────────
 const playfair = Playfair_Display({
@@ -126,8 +127,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-1PQVGSKJGE', { send_page_view: false });
           `}
         </Script>
-
-        <GoogleAnalytics />
+<Suspense fallback={null}>
+  <GoogleAnalytics />
+</Suspense>
       </body>
     </html>
   );
