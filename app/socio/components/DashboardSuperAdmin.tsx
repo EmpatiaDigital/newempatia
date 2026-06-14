@@ -339,8 +339,8 @@ function VistaPagos({ onVolver }: { onVolver: () => void }) {
     try {
       const token = localStorage.getItem("token");
       const url = filtro
-        ? `https://empatia-dominio-back.vercel.app/api/pagos?estado=${filtro}`
-        : "https://empatia-dominio-back.vercel.app/api/pagos";
+        ? `https://newempatiabackend.vercel.app/api/pagos?estado=${filtro}`
+        : "https://newempatiabackend.vercel.app/api/pagos";
       const res  = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
       const data = await res.json();
       setPagos(Array.isArray(data) ? data : []);
@@ -355,7 +355,7 @@ function VistaPagos({ onVolver }: { onVolver: () => void }) {
 
   const handleAceptar = async (id: string) => {
     const token = localStorage.getItem("token");
-    await fetch(`https://empatia-dominio-back.vercel.app/api/pagos/${id}/aceptar`, {
+    await fetch(`https://newempatiabackend.vercel.app/api/pagos/${id}/aceptar`, {
       method: "PUT",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({ notaAdmin: "Comprobante verificado" }),
@@ -377,7 +377,7 @@ function VistaPagos({ onVolver }: { onVolver: () => void }) {
     });
     if (!isConfirmed) return;
     const token = localStorage.getItem("token");
-    await fetch(`https://empatia-dominio-back.vercel.app/api/pagos/${id}/rechazar`, {
+    await fetch(`https://newempatiabackend.vercel.app/api/pagos/${id}/rechazar`, {
       method: "PUT",
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({ notaAdmin: nota ?? "" }),
@@ -532,7 +532,7 @@ export default function SuperAdminDashboard() {
   // Cargar cantidad de comprobantes pendientes al montar
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("https://empatia-dominio-back.vercel.app/api/pagos?estado=comprobante_enviado", {
+    fetch("https://newempatiabackend.vercel.app/api/pagos?estado=comprobante_enviado", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => r.json())
@@ -544,7 +544,7 @@ export default function SuperAdminDashboard() {
   useEffect(() => {
     if (vista !== "socios") return;
     setLoadingSocios(true);
-    fetch("https://empatia-dominio-back.vercel.app/api/active/accounts")
+    fetch("https://newempatiabackend.vercel.app/api/active/accounts")
       .then((res) => res.json())
       .then((data: Socio[]) => {
         setSocios(data.filter((u) => u.tipo === "socio"));
@@ -592,7 +592,7 @@ export default function SuperAdminDashboard() {
       : Number(cantidad) * 24 * 60 * 60 * 1000;
     const tiempoFinal = new Date(Date.now() + ms);
     try {
-      await fetch(`https://empatia-dominio-back.vercel.app/api/active/${socio._id}`, {
+      await fetch(`https://newempatiabackend.vercel.app/api/active/${socio._id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ activo: false, hasta: tiempoFinal, tipo: "socio" }),
@@ -616,7 +616,7 @@ export default function SuperAdminDashboard() {
     });
     if (!isConfirmed) return;
     try {
-      await fetch(`https://empatia-dominio-back.vercel.app/api/active/${socio._id}`, {
+      await fetch(`https://newempatiabackend.vercel.app/api/active/${socio._id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ activo: true, tipo: "socio" }),
