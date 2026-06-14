@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import '../style/MyPost.css';
 
 const DEFAULT_AVATAR = 'https://cdn-icons-png.flaticon.com/512/64/64572.png';
-const API = 'https://empatia-dominio-back.vercel.app/api';
+const API = 'https://newempatiabackend.vercel.app/api';
 
 interface Publicacion {
   _id: string;
