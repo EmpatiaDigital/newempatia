@@ -1,0 +1,121 @@
+.faq-bot-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  padding: 0;
+  overflow: hidden;
+}
+
+.faq-link {
+  color: #4a90d9;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.faq-bot-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.faq-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1001;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 24px;
+}
+
+.faq-panel {
+  width: 360px;
+  max-height: 480px;
+  background: #ffffff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.faq-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #1e3a5f;
+  color: #ffffff;
+}
+
+.faq-header h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  margin: 0;
+}
+
+.faq-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.faq-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+}
+
+.faq-loading,
+.faq-empty {
+  font-family: "DM Sans", sans-serif;
+  color: #666666;
+  font-size: 14px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 12px 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e3a5f;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-icon {
+  color: #4a90d9;
+  font-size: 18px;
+}
+
+.faq-answer {
+  padding: 0 0 12px 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  color: #333333;
+  line-height: 1.6;
+}
