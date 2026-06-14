@@ -24,12 +24,6 @@ interface Post {
 
 type GtagParams = Record<string, string | number>;
 
-declare global {
-  interface Window {
-    gtag?: (command: string, event: string, params: GtagParams) => void;
-  }
-}
-
 const optimizarCloudinary = (url: string, params = "f_auto,q_auto,w_1200"): string => {
   if (!url || !url.includes("res.cloudinary.com")) return url;
   if (url.includes("/upload/f_auto") || url.includes("/upload/q_auto")) return url;
@@ -82,7 +76,7 @@ export default function PostCompleto(): React.ReactElement {
   const [cargando, setCargando] = useState(true);
   const startTimeRef = useRef<number | null>(null);
 
-  const shareUrl = `https://empatia-dominio-back.vercel.app/api/posts/${id}/preview`;
+  const shareUrl = `http://localhost:5000/api/posts/${id}/preview`;
   const currentUrl =
     typeof window !== "undefined" ? `${window.location.origin}/post/${id}` : "";
 
@@ -124,7 +118,7 @@ export default function PostCompleto(): React.ReactElement {
         setCargando(true);
         const visitorId = getVisitorId();
         try {
-          await fetch(`https://empatia-dominio-back.vercel.app/api/posts/${id}/vista`, {
+          await fetch(`http://localhost:5000/api/posts/${id}/vista`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ visitorId }),
@@ -132,7 +126,7 @@ export default function PostCompleto(): React.ReactElement {
         } catch (err) {
           console.error("Error al registrar vista:", err);
         }
-        const res = await fetch(`https://empatia-dominio-back.vercel.app/api/posts/${id}`);
+        const res = await fetch(`http://localhost:5000/api/posts/${id}`);
         const data: Post = await res.json();
         setPost(data);
         setCargando(false);
@@ -148,7 +142,7 @@ export default function PostCompleto(): React.ReactElement {
     if (!post) return;
     const fetchRelacionados = async () => {
       try {
-        const res = await fetch("https://empatia-dominio-back.vercel.app/api/posts");
+        const res = await fetch("http://localhost:5000/api/posts");
         const todosLosPosts: Post[] = await res.json();
         const categoriaActual = resolverCategoria(post.categoria);
         const filtrados = todosLosPosts
