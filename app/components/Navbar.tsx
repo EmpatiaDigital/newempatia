@@ -200,6 +200,7 @@ export default function Navbar() {
               <>
                 <li><Link href="/data-user" onClick={handleLinkClick}>Data</Link></li>
                 <li><Link href="/superadmincourses" onClick={handleLinkClick}>Tutor</Link></li>
+                <li><Link href="/faqs" onClick={handleLinkClick}>Faqs</Link></li>
               </>
             )}
             <li className="user group">
