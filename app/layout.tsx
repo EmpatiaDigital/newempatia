@@ -1,9 +1,11 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import Providers from "./components/Providers";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import "./globals.css";
 
 // ─── Fuentes con preload automático de Next.js ───────────────────────────────
@@ -30,19 +32,19 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://empatiadigital.com.ar"),
 
- title: {
-  default: "Empatía Digital",
-  template: "%s | Empatía Digital",
-},
-description:
-  "Plataforma de educación en IA, bienestar digital y seguridad tecnológica. Aprendé a usar la tecnología con conciencia.",
-keywords: ["empatía digital", "IA", "inteligencia artificial", "bienestar digital", "educación online", "seguridad digital"],
-authors: [{ name: "Gabriel", url: "https://empatiadigital.com.ar" }],
-creator: "Empatía Digital",
-publisher: "Empatía Digital",
-icons: {
-  icon: "/icon.png",
-},
+  title: {
+    default: "Empatía Digital",
+    template: "%s | Empatía Digital",
+  },
+  description:
+    "Plataforma de educación en IA, bienestar digital y seguridad tecnológica. Aprendé a usar la tecnología con conciencia.",
+  keywords: ["empatía digital", "IA", "inteligencia artificial", "bienestar digital", "educación online", "seguridad digital"],
+  authors: [{ name: "Gabriel", url: "https://empatiadigital.com.ar" }],
+  creator: "Empatía Digital",
+  publisher: "Empatía Digital",
+  icons: {
+    icon: "/icon.png",
+  },
 
   // ─── Open Graph ─────────────────────────────────────────────────────────────
   openGraph: {
@@ -55,7 +57,7 @@ icons: {
       "Aprendé a usar la IA y la tecnología con conciencia y seguridad.",
     images: [
       {
-        url: "/og-image.png", // 1200×630px en /public
+        url: "/icon.png",
         width: 1200,
         height: 630,
         alt: "Empatía Digital – Educación y tecnología con propósito",
@@ -69,9 +71,8 @@ icons: {
     title: "Empatía Digital",
     description:
       "Aprendé a usar la IA y la tecnología con conciencia y seguridad.",
-    images: ["/og-image.png"],
+    images: ["/icon.png"],
   },
-
 
   // ─── Manifest PWA ────────────────────────────────────────────────────────────
   manifest: "/manifest.json",
@@ -111,6 +112,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
         </Providers>
+
+        {/* GA4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1PQVGSKJGE"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1PQVGSKJGE', { send_page_view: false });
+          `}
+        </Script>
+
+        <GoogleAnalytics />
       </body>
     </html>
   );
