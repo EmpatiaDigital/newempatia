@@ -1,3 +1,5 @@
+
+
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
@@ -6,8 +8,8 @@ import Providers from "./components/Providers";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import FaqWidget from "./components/FaqWidget";
 import "./globals.css";
-import { Suspense } from "react";
 
 // ─── Fuentes con preload automático de Next.js ───────────────────────────────
 const playfair = Playfair_Display({
@@ -107,30 +109,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* DNS prefetch para tu API si está en otro dominio */}
         {/* <link rel="dns-prefetch" href="https://api.empatiadigital.com.ar" /> */}
       </head>
-      <body>
-        <Providers>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </Providers>
+     <body>
+  <Providers>
+    <Navbar />
+    <main>{children}</main>
+    <Footer />
+    <FaqWidget />
+  </Providers>
 
-        {/* GA4 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1PQVGSKJGE"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1PQVGSKJGE', { send_page_view: false });
-          `}
-        </Script>
-<Suspense fallback={null}>
+  {/* GA4 */}
+  <Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-1PQVGSKJGE"
+    strategy="afterInteractive"
+  />
+  <Script id="ga4-init" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1PQVGSKJGE', { send_page_view: false });
+    `}
+  </Script>
+
   <GoogleAnalytics />
-</Suspense>
-      </body>
+</body>
     </html>
   );
 }
