@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import '../style/Superadmincourses.css';
 import Link from 'next/link';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://newempatiabackend.vercel.app/api';
 
 // ── Genera un código promo alfanumérico de 8 caracteres ──
 const generarCodigoPromo = () => {
