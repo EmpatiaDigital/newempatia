@@ -8,7 +8,7 @@ import '../style/TestJuego.css';
 
 const PREGUNTAS_POR_JUEGO = 5;
 const PUNTOS_POR_CORRECTA = 20;
-const API = 'http://localhost:5000/api';
+const API = 'https://newempatiabackend.vercel.app/api';
 const STORAGE_KEY = 'empatia_trivia_vistas';
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
