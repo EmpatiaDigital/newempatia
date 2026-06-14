@@ -9,7 +9,7 @@ import "../style/Informacion.css";
 
 const GUIA_PDF_DEFAULT = "/Guía Empatía Digital.pdf";
 
-const BASE_URL = "https://empatia-dominio-back.vercel.app/api";
+const BASE_URL = "https://newempatiabackend.vercel.app/api";
 
 /* ── tipos ── */
 interface ContenidoItem {
