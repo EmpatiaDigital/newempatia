@@ -40,7 +40,7 @@ export default function HomePage() {
   const fetchPosts = async () => {
     try {
       setCargando(true);
-      const res = await fetch("https://empatia-dominio-back.vercel.app/api/posts?limit=6");
+      const res = await fetch("https://newempatiabackend.vercel.app/api/posts?limit=6");
       if (!res.ok) throw new Error(`Error de red: ${res.status}`);
 
       const data: Post[] | ApiPostResponse = await res.json();
