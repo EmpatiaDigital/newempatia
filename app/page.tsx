@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import ModalActividades from "./components/ModalActividades";
-import BannerActividad from "./components/BannerActividad";   // ← NUEVA LÍNEA
+import BannerActividad from "./components/BannerActividad";  
+import StatsBann from "./Statsbanner/page";  
+
 import PostStatsMini from "./components/PostStatsMini";
 import "./style/HomePage.css";
 
@@ -40,7 +42,7 @@ export default function HomePage() {
   const fetchPosts = async () => {
     try {
       setCargando(true);
-      const res = await fetch("https://newempatiabackend.vercel.app/api/posts?limit=6");
+      const res = await fetch("https://empatia-dominio-back.vercel.app/api/posts?limit=6");
       if (!res.ok) throw new Error(`Error de red: ${res.status}`);
 
       const data: Post[] | ApiPostResponse = await res.json();
@@ -167,6 +169,7 @@ export default function HomePage() {
             </>
           )}
         </div>
+      <StatsBann />
 
         {/* ── POSTS RECIENTES ──────────────────────────────────────────────────── */}
         <section className="posts-section">
