@@ -7,7 +7,6 @@ import Image from "next/image";
 import ModalActividades from "./components/ModalActividades";
 import BannerActividad from "./components/BannerActividad";  
 import StatsBann from "./Statsbanner/page";  
-
 import PostStatsMini from "./components/PostStatsMini";
 import "./style/HomePage.css";
 
