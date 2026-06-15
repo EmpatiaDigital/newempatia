@@ -1,0 +1,210 @@
+/* ── StatsBanner ─────────────────────────────────────────────────────────── */
+
+.stats-banner {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+  border-radius: 20px;
+}
+
+.stats-banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+.stats-banner-text {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #1e3a5f;
+  max-width: 680px;
+  margin: 0;
+  position: relative;
+  padding-left: 0;
+}
+
+/* Acento decorativo para dar jerarquía al texto */
+.stats-banner-text::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(135deg, #4a90d9, #6bb3f0);
+  border-radius: 4px;
+  margin: 0 auto 16px;
+}
+
+/* ── Cuadros de números ── */
+
+.stats-banner-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.stats-banner-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 150px;
+  padding: 22px 32px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.08);
+  border: 1px solid #e6edf5;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stats-banner-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(30, 58, 95, 0.14);
+}
+
+.stats-banner-number {
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #1e3a5f, #4a90d9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stats-banner-label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Panel admin (superadmin) ── */
+
+.stats-banner-admin {
+  max-width: 1000px;
+  margin: 0 auto 12px;
+  padding: 0 24px;
+}
+
+.stats-banner-admin-toggle {
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+}
+
+.stats-banner-admin-panel {
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats-banner-admin-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  font-family: "DM Sans", sans-serif;
+}
+
+.stats-banner-admin-textarea,
+.stats-banner-admin-input {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  resize: vertical;
+}
+
+.stats-banner-admin-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stats-banner-admin-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+}
+
+.stats-banner-admin-save {
+  align-self: flex-start;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+}
+
+.stats-banner-admin-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Responsive ── */
+
+@media (min-width: 768px) {
+  .stats-banner-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    gap: 40px;
+  }
+
+  .stats-banner-text {
+    text-align: left;
+    font-size: 28px;
+  }
+
+  .stats-banner-text::before {
+    margin: 0 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-banner-text {
+    font-size: 22px;
+  }
+
+  .stats-banner-number {
+    font-size: 34px;
+  }
+
+  .stats-banner-box {
+    min-width: 120px;
+    padding: 18px 20px;
+  }
+}
