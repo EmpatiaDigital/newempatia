@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import "../style/StatsBanner.css";
 
 // ── Tipos ─────────────────────────────────────────────────────────────────────
-
 interface BannerConfig {
   _id?: string;
   textoBase: string;
