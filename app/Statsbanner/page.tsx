@@ -35,6 +35,27 @@ const CONFIG_DEFAULT: BannerConfig = {
   seguidoresRedes: 0,
 };
 
+const TESTIMONIOS = [
+  {
+    texto:
+      "En las redes sociales suele banalizarse todo lo relacionado con la empatía y el buen trato. Por eso cobra especial importancia aprender a vincularnos de manera saludable a través de los medios digitales.",
+    autor: "Francisco Cabrera",
+    rol: "Profesor",
+  },
+  {
+    texto:
+      "La navegación es sencilla y visualmente atractiva. Para facil uso de cualquier usuario.",
+    autor: "Carolina Tempesta",
+    rol: "Maestra",
+  },
+  {
+    texto:
+      "Me gustó mucho la sección de recursos para trabajar la atención en niños aprendiendo y disfrutando al mismo tiempo.",
+    autor: "Alicia Delgado",
+    rol: "Mamá",
+  },
+];
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function formatearNumero(n: number): string {
@@ -45,15 +66,13 @@ function formatearNumero(n: number): string {
   return `${n}`;
 }
 
-// ── Hook: animación de conteo ascendente ───────────────────────────────────────
+// ── Hook: animación de conteo ascendente ──────────────────────────────────────
 
 function useCountUp(target: number, start: boolean, duration = 1400): number {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (!start) return;
-
-    // Si el target es 0, no hay nada que animar
     if (target <= 0) {
       setValue(0);
       return;
@@ -65,11 +84,8 @@ function useCountUp(target: number, start: boolean, duration = 1400): number {
     const step = (timestamp: number) => {
       if (startTime === null) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-
-      // ease-out cúbico: arranca rápido y desacelera al final
       const eased = 1 - Math.pow(1 - progress, 3);
       setValue(Math.floor(eased * target));
-
       if (progress < 1) {
         frameId = requestAnimationFrame(step);
       } else {
@@ -84,24 +100,49 @@ function useCountUp(target: number, start: boolean, duration = 1400): number {
   return value;
 }
 
+// ── Hook: carrusel automático de testimonios ──────────────────────────────────
+
+function useTestimonioCarrusel(total: number, intervalo = 4500) {
+  const [indice, setIndice] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    if (total <= 1) return;
+
+    const timer = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIndice((prev) => (prev + 1) % total);
+        setVisible(true);
+      }, 500);
+    }, intervalo);
+
+    return () => clearInterval(timer);
+  }, [total, intervalo]);
+
+  return { indice, visible };
+}
+
 // ── Componente ────────────────────────────────────────────────────────────────
 
 export default function StatsBanner({ apiBase = "https://newempatiabackend.vercel.app" }: StatsBannerProps) {
   const { user } = useAuth();
 
-  const [config, setConfig]     = useState<BannerConfig | null>(null);
-  const [borrador, setBorrador] = useState<BannerConfig | null>(null);
+  const [config, setConfig]         = useState<BannerConfig | null>(null);
+  const [borrador, setBorrador]     = useState<BannerConfig | null>(null);
   const [visitantes, setVisitantes] = useState<number>(0);
 
-  const [loading, setLoading]   = useState(true);
-  const [editando, setEditando] = useState(false);
-  const [guardando, setGuardando] = useState(false);
+  const [loading, setLoading]       = useState(true);
+  const [editando, setEditando]     = useState(false);
+  const [guardando, setGuardando]   = useState(false);
 
-  // ── Visibilidad para disparar la animación ──
-  const statsRef = useRef<HTMLDivElement | null>(null);
+  const statsRef              = useRef<HTMLDivElement | null>(null);
   const [enVista, setEnVista] = useState(false);
 
   const esSuperAdmin = user?.role === "superadmin";
+
+  const { indice, visible } = useTestimonioCarrusel(TESTIMONIOS.length, 4500);
+  const testimonio          = TESTIMONIOS[indice];
 
   // ── Cargar configuración ──
   const fetchConfig = useCallback(async () => {
@@ -119,7 +160,7 @@ export default function StatsBanner({ apiBase = "https://newempatiabackend.verce
     }
   }, [apiBase]);
 
-  // ── Cargar visitantes únicos (solo si mostrarStats) ──
+  // ── Cargar visitantes únicos ──
   const fetchVisitantes = useCallback(async () => {
     try {
       const res = await fetch(`${apiBase}/api/user-actividad`);
@@ -132,15 +173,13 @@ export default function StatsBanner({ apiBase = "https://newempatiabackend.verce
     }
   }, [apiBase]);
 
-  useEffect(() => {
-    void fetchConfig();
-  }, [fetchConfig]);
+  useEffect(() => { void fetchConfig(); }, [fetchConfig]);
 
   useEffect(() => {
     if (config?.mostrarStats) void fetchVisitantes();
   }, [config?.mostrarStats, fetchVisitantes]);
 
-  // ── Observer: detectar cuando los números entran en pantalla ──
+  // ── Observer para animar números ──
   useEffect(() => {
     if (!config?.mostrarStats) return;
     const el = statsRef.current;
@@ -150,7 +189,7 @@ export default function StatsBanner({ apiBase = "https://newempatiabackend.verce
       ([entry]) => {
         if (entry.isIntersecting) {
           setEnVista(true);
-          observer.disconnect(); // solo animamos una vez
+          observer.disconnect();
         }
       },
       { threshold: 0.3 }
@@ -160,11 +199,10 @@ export default function StatsBanner({ apiBase = "https://newempatiabackend.verce
     return () => observer.disconnect();
   }, [config?.mostrarStats]);
 
-  // ── Valores animados ──
   const visitantesAnimado = useCountUp(visitantes, enVista);
   const seguidoresAnimado = useCountUp(config?.seguidoresRedes ?? 0, enVista);
 
-  // ── Guardar cambios (solo superadmin) ──
+  // ── Guardar cambios ──
   const handleGuardar = async () => {
     if (!borrador) return;
     setGuardando(true);
@@ -192,14 +230,11 @@ export default function StatsBanner({ apiBase = "https://newempatiabackend.verce
   };
 
   if (loading || !config) return null;
-
-  // Si está desactivado y no es superadmin, no se renderiza nada
   if (!config.activo && !esSuperAdmin) return null;
 
   return (
     <section className="stats-banner">
 
-      {/* Panel de edición — solo superadmin */}
       {esSuperAdmin && (
         <div className="stats-banner-admin">
           <button
@@ -266,12 +301,11 @@ export default function StatsBanner({ apiBase = "https://newempatiabackend.verce
         </div>
       )}
 
-      {/* Contenido visible al público */}
       {config.activo && (
         <div className="stats-banner-content">
           <p className="stats-banner-text">{config.textoBase}</p>
 
-          {config.mostrarStats && (
+          {config.mostrarStats ? (
             <div className="stats-banner-stats" ref={statsRef}>
               <div className="stats-banner-box">
                 <span className="stats-banner-number">{formatearNumero(visitantesAnimado)}</span>
@@ -280,6 +314,25 @@ export default function StatsBanner({ apiBase = "https://newempatiabackend.verce
               <div className="stats-banner-box">
                 <span className="stats-banner-number">{formatearNumero(seguidoresAnimado)}</span>
                 <span className="stats-banner-label">nos siguen en redes</span>
+              </div>
+            </div>
+          ) : (
+            <div className="stats-banner-testimonio-wrapper">
+              <div className={`stats-banner-testimonio${visible ? " stats-banner-testimonio--visible" : ""}`}>
+                <p className="stats-banner-testimonio-texto">
+                  &ldquo;{testimonio.texto}&rdquo;
+                </p>
+                <span className="stats-banner-testimonio-autor">
+                  {testimonio.autor} · <em>{testimonio.rol}</em>
+                </span>
+              </div>
+              <div className="stats-banner-dots">
+                {TESTIMONIOS.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`stats-banner-dot${i === indice ? " stats-banner-dot--activo" : ""}`}
+                  />
+                ))}
               </div>
             </div>
           )}
