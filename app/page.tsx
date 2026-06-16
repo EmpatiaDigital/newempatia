@@ -1,273 +1,343 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useAuth } from "../context/AuthContext";
+import Swal from "sweetalert2";
+import "../style/StatsBanner.css";
 
-import ModalActividades from "./components/ModalActividades";
-import BannerActividad from "./components/BannerActividad";  
-import StatsBann from "./Statsbanner/page";  
-import PostStatsMini from "./components/PostStatsMini";
-import "./style/HomePage.css";
+// ── Tipos ─────────────────────────────────────────────────────────────────────
 
-const FALLBACK_COVER = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop";
-const DEFAULT_AVATAR = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
-
-export interface Post {
-  _id: string;
-  titulo: string;
-  portada?: string;
-  imagen?: string;
-  img?: string;
-  categoria?: string | string[];
-  autor?: string;
-  avatar?: string;
-  votos?: number;
-  likes?: number;
+interface BannerConfig {
+  _id?: string;
+  textoBase: string;
+  activo: boolean;
+  mostrarStats: boolean;
+  seguidoresRedes: number;
 }
 
-interface ApiPostResponse {
-  posts?: Post[];
+interface ActividadVisitor {
+  visitorId: string;
 }
 
-export default function HomePage() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [destacados, setDestacados] = useState<Post[]>([]);
-  const [cargando, setCargando] = useState<boolean>(true);
-  const [slideIndex, setSlideIndex] = useState<number>(0);
+interface StatsBannerProps {
+  apiBase?: string;
+}
 
-  const router = useRouter();
+// ── Constantes ────────────────────────────────────────────────────────────────
 
-  const fetchPosts = async () => {
-    try {
-      setCargando(true);
-      const res = await fetch("https://empatia-dominio-back.vercel.app/api/posts?limit=6");
-      if (!res.ok) throw new Error(`Error de red: ${res.status}`);
+const TEXTO_DEFAULT =
+  "Miles de personas ya conocieron Empatía Digital y accedieron a contenidos sobre seguridad, ciudadanía y bienestar digital.";
 
-      const data: Post[] | ApiPostResponse = await res.json();
+const CONFIG_DEFAULT: BannerConfig = {
+  textoBase: TEXTO_DEFAULT,
+  activo: true,
+  mostrarStats: false,
+  seguidoresRedes: 0,
+};
 
-      let final: Post[] = [];
-      if (Array.isArray(data)) {
-        final = data;
-      } else if (data && Array.isArray(data.posts)) {
-        final = data.posts;
+const TESTIMONIOS = [
+  {
+    texto:
+      "En las redes sociales suele banalizarse todo lo relacionado con la empatía y el buen trato. Por eso cobra especial importancia aprender a vincularnos de manera saludable a través de los medios digitales.",
+    autor: "Francisco Cabrera",
+    rol: "Profesor",
+  },
+  {
+    texto:
+      "La navegación es sencilla y visualmente atractiva. Le agregaría un video de bienvenida que anticipe al estudiante qué va a aprender y qué va a poder lograr al finalizar el recorrido.",
+    autor: "Carolina Tempesta",
+    rol: "Maestra",
+  },
+  {
+    texto:
+      "Me gustó mucho la sección de recursos para trabajar la atención en niños aprendiendo y disfrutando al mismo tiempo.",
+    autor: "Alicia Delgado",
+    rol: "Mamá",
+  },
+];
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function formatearNumero(n: number): string {
+  if (n >= 1000) {
+    const k = n / 1000;
+    return `${k % 1 === 0 ? k.toFixed(0) : k.toFixed(1)}k`;
+  }
+  return `${n}`;
+}
+
+// ── Hook: animación de conteo ascendente ──────────────────────────────────────
+
+function useCountUp(target: number, start: boolean, duration = 1400): number {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!start) return;
+    if (target <= 0) {
+      setValue(0);
+      return;
+    }
+
+    let startTime: number | null = null;
+    let frameId: number;
+
+    const step = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.floor(eased * target));
+      if (progress < 1) {
+        frameId = requestAnimationFrame(step);
+      } else {
+        setValue(target);
       }
+    };
 
-      setPosts(final);
+    frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
+  }, [target, start, duration]);
 
-      const votados = [...final]
-        .sort((a, b) => (b.votos || b.likes || 0) - (a.votos || a.likes || 0))
-        .slice(0, 3);
+  return value;
+}
 
-      setDestacados(votados);
-    } catch (error) {
-      console.error("Error al obtener posts:", error);
-      setPosts([]);
-      setDestacados([]);
+// ── Hook: carrusel automático de testimonios ──────────────────────────────────
+
+function useTestimonioCarrusel(total: number, intervalo = 4500) {
+  const [indice, setIndice] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    if (total <= 1) return;
+
+    const timer = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIndice((prev) => (prev + 1) % total);
+        setVisible(true);
+      }, 500);
+    }, intervalo);
+
+    return () => clearInterval(timer);
+  }, [total, intervalo]);
+
+  return { indice, visible };
+}
+
+// ── Componente ────────────────────────────────────────────────────────────────
+
+export default function StatsBanner({ apiBase = "https://newempatiabackend.vercel.app" }: StatsBannerProps) {
+  const { user } = useAuth();
+
+  const [config, setConfig]         = useState<BannerConfig | null>(null);
+  const [borrador, setBorrador]     = useState<BannerConfig | null>(null);
+  const [visitantes, setVisitantes] = useState<number>(0);
+
+  const [loading, setLoading]       = useState(true);
+  const [editando, setEditando]     = useState(false);
+  const [guardando, setGuardando]   = useState(false);
+
+  const statsRef              = useRef<HTMLDivElement | null>(null);
+  const [enVista, setEnVista] = useState(false);
+
+  const esSuperAdmin = user?.role === "superadmin";
+
+  const { indice, visible } = useTestimonioCarrusel(TESTIMONIOS.length, 4500);
+  const testimonio          = TESTIMONIOS[indice];
+
+  // ── Cargar configuración ──
+  const fetchConfig = useCallback(async () => {
+    try {
+      const res = await fetch(`${apiBase}/api/banner-config`);
+      if (!res.ok) throw new Error("No se pudo obtener la configuración");
+      const data: BannerConfig = await res.json();
+      setConfig(data);
+      setBorrador(data);
+    } catch {
+      setConfig(CONFIG_DEFAULT);
+      setBorrador(CONFIG_DEFAULT);
     } finally {
-      setCargando(false);
+      setLoading(false);
+    }
+  }, [apiBase]);
+
+  // ── Cargar visitantes únicos ──
+  const fetchVisitantes = useCallback(async () => {
+    try {
+      const res = await fetch(`${apiBase}/api/user-actividad`);
+      if (!res.ok) throw new Error("No se pudo obtener actividad");
+      const actividades: ActividadVisitor[] = await res.json();
+      const unicos = new Set(actividades.map((a) => a.visitorId)).size;
+      setVisitantes(unicos);
+    } catch {
+      setVisitantes(0);
+    }
+  }, [apiBase]);
+
+  useEffect(() => { void fetchConfig(); }, [fetchConfig]);
+
+  useEffect(() => {
+    if (config?.mostrarStats) void fetchVisitantes();
+  }, [config?.mostrarStats, fetchVisitantes]);
+
+  // ── Observer para animar números ──
+  useEffect(() => {
+    if (!config?.mostrarStats) return;
+    const el = statsRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setEnVista(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [config?.mostrarStats]);
+
+  const visitantesAnimado = useCountUp(visitantes, enVista);
+  const seguidoresAnimado = useCountUp(config?.seguidoresRedes ?? 0, enVista);
+
+  // ── Guardar cambios ──
+  const handleGuardar = async () => {
+    if (!borrador) return;
+    setGuardando(true);
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`${apiBase}/api/banner-config`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(borrador),
+      });
+      if (!res.ok) throw new Error("Error al guardar");
+      const data: BannerConfig = await res.json();
+      setConfig(data);
+      setBorrador(data);
+      setEditando(false);
+      Swal.fire({ icon: "success", title: "Banner actualizado", timer: 1500, showConfirmButton: false });
+    } catch {
+      Swal.fire("Error", "No se pudo guardar la configuración.", "error");
+    } finally {
+      setGuardando(false);
     }
   };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
-  useEffect(() => {
-    if (destacados.length <= 1) return;
-    const interval = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1) % destacados.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [destacados.length]);
-
-  const handlePrev = () =>
-    setSlideIndex((prev) => (prev - 1 + destacados.length) % destacados.length);
-  const handleNext = () =>
-    setSlideIndex((prev) => (prev + 1) % destacados.length);
-
-  const postsToShow = posts.slice(0, 6);
-  const currentSlidePost = destacados[slideIndex];
+  if (loading || !config) return null;
+  if (!config.activo && !esSuperAdmin) return null;
 
   return (
-    <>
-      <ModalActividades />
-      <BannerActividad />
+    <section className="stats-banner">
 
-      <div className="homepage">
+      {esSuperAdmin && (
+        <div className="stats-banner-admin">
+          <button
+            className="stats-banner-admin-toggle"
+            onClick={() => setEditando((e) => !e)}
+          >
+            {editando ? "Cerrar edición" : "⚙ Editar banner"}
+          </button>
 
-        {/* ── CARRUSEL ─────────────────────────────────────────────────────────── */}
-        <div className="carousel-wrapper" style={{
-          height: "clamp(320px, 55vw, 600px)",
-          minHeight: "320px",
-          background: "#111827",
-          position: "relative",
-          overflow: "hidden",
-        }}>
-          {cargando ? (
-            <div style={{ position: "absolute", inset: 0, background: "#1e293b" }} />
-          ) : destacados.length === 0 ? (
-            <div className="carousel-empty">No hay publicaciones destacadas.</div>
-          ) : (
-            <>
-              {destacados.map((post, i) => {
-                const imgSrc = post.portada || post.imagen || post.img || FALLBACK_COVER;
-                return (
-                  <div
-                    key={post._id || i}
-                    className={`carousel-image-container ${i === slideIndex ? "active" : ""}`}
-                    style={{ position: "absolute", inset: 0, opacity: i === slideIndex ? 1 : 0, transition: "opacity 0.5s ease" }}
-                  >
-                    <Image
-                      src={imgSrc}
-                      alt={post.titulo || "Publicación destacada"}
-                      fill
-                      priority={i === 0}
-                      sizes="(max-width: 768px) 100vw, 1200px"
-                      style={{ objectFit: "cover" }}
-                    />
-                  </div>
-                );
-              })}
+          {editando && borrador && (
+            <div className="stats-banner-admin-panel">
+              <label className="stats-banner-admin-label">
+                Texto base
+                <textarea
+                  className="stats-banner-admin-textarea"
+                  value={borrador.textoBase}
+                  onChange={(e) => setBorrador({ ...borrador, textoBase: e.target.value })}
+                  rows={3}
+                />
+              </label>
 
-              {currentSlidePost && (
-                <div className="overlay">
-                  <span className="overlay-eyebrow">
-                    Destacado · {Array.isArray(currentSlidePost.categoria)
-                      ? currentSlidePost.categoria[0]
-                      : currentSlidePost.categoria || "General"}
-                  </span>
-                  <h1>{currentSlidePost.titulo}</h1>
-                  <button
-                    className="btn-hero"
-                    onClick={() => router.push(`/post/${currentSlidePost._id}`)}
-                  >
-                    Leer artículo completo
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                      <path d="M3 8h10M9 4l4 4-4 4" />
-                    </svg>
-                  </button>
-                </div>
+              <div className="stats-banner-admin-row">
+                <label className="stats-banner-admin-switch">
+                  <input
+                    type="checkbox"
+                    checked={borrador.activo}
+                    onChange={(e) => setBorrador({ ...borrador, activo: e.target.checked })}
+                  />
+                  <span>Mostrar componente</span>
+                </label>
+
+                <label className="stats-banner-admin-switch">
+                  <input
+                    type="checkbox"
+                    checked={borrador.mostrarStats}
+                    onChange={(e) => setBorrador({ ...borrador, mostrarStats: e.target.checked })}
+                  />
+                  <span>Mostrar números dinámicos</span>
+                </label>
+              </div>
+
+              {borrador.mostrarStats && (
+                <label className="stats-banner-admin-label">
+                  Seguidores en redes (manual)
+                  <input
+                    type="number"
+                    min={0}
+                    className="stats-banner-admin-input"
+                    value={borrador.seguidoresRedes}
+                    onChange={(e) => setBorrador({ ...borrador, seguidoresRedes: Number(e.target.value) })}
+                  />
+                </label>
               )}
 
-              <button className="carousel-btn left" onClick={handlePrev} aria-label="Anterior">❮</button>
-              <button className="carousel-btn right" onClick={handleNext} aria-label="Siguiente">❯</button>
+              <button
+                className="stats-banner-admin-save"
+                onClick={handleGuardar}
+                disabled={guardando}
+              >
+                {guardando ? "Guardando..." : "Guardar cambios"}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
-              <div className="carousel-dots" role="tablist">
-                {destacados.map((_, i) => (
-                  <button
+      {config.activo && (
+        <div className="stats-banner-content">
+          <p className="stats-banner-text">{config.textoBase}</p>
+
+          {config.mostrarStats ? (
+            <div className="stats-banner-stats" ref={statsRef}>
+              <div className="stats-banner-box">
+                <span className="stats-banner-number">{formatearNumero(visitantesAnimado)}</span>
+                <span className="stats-banner-label">nos visitaron</span>
+              </div>
+              <div className="stats-banner-box">
+                <span className="stats-banner-number">{formatearNumero(seguidoresAnimado)}</span>
+                <span className="stats-banner-label">nos siguen en redes</span>
+              </div>
+            </div>
+          ) : (
+            <div className="stats-banner-testimonio-wrapper">
+              <div className={`stats-banner-testimonio${visible ? " stats-banner-testimonio--visible" : ""}`}>
+                <p className="stats-banner-testimonio-texto">
+                  &ldquo;{testimonio.texto}&rdquo;
+                </p>
+                <span className="stats-banner-testimonio-autor">
+                  {testimonio.autor} · <em>{testimonio.rol}</em>
+                </span>
+              </div>
+              <div className="stats-banner-dots">
+                {TESTIMONIOS.map((_, i) => (
+                  <span
                     key={i}
-                    role="tab"
-                    aria-selected={i === slideIndex}
-                    className={`dot ${i === slideIndex ? "active" : ""}`}
-                    onClick={() => setSlideIndex(i)}
-                    aria-label={`Slide ${i + 1}`}
+                    className={`stats-banner-dot${i === indice ? " stats-banner-dot--activo" : ""}`}
                   />
                 ))}
               </div>
-            </>
+            </div>
           )}
         </div>
-      <StatsBann />
-
-        {/* ── POSTS RECIENTES ──────────────────────────────────────────────────── */}
-        <section className="posts-section">
-          <div className="posts-section-header">
-            <div>
-              <h2 className="titulo-principal">Publicaciones recientes</h2>
-            </div>
-            <button className="section-ver-todas" onClick={() => router.push("/post")}>
-              Ver todas
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
-            </button>
-          </div>
-
-          {cargando ? (
-            <div className="posts-skeleton">
-              {[1, 2, 3, 4, 5, 6].map((n) => (
-                <div key={n} className="skeleton-card">
-                  <div className="skeleton-shimmer" />
-                </div>
-              ))}
-            </div>
-          ) : postsToShow.length === 0 ? (
-            <p className="posts-empty">No hay publicaciones para mostrar.</p>
-          ) : (
-            <div className="lista-posts-container">
-              {postsToShow.map((post, idx) => {
-                let categoria = "Sentidos";
-                if (Array.isArray(post.categoria) && post.categoria.length > 0 && typeof post.categoria[0] === "string") {
-                  categoria = post.categoria[0].trim();
-                } else if (typeof post.categoria === "string" && post.categoria.trim() !== "") {
-                  categoria = post.categoria.trim();
-                }
-
-                const bgUrl = post.portada || FALLBACK_COVER;
-
-                return (
-                  <div
-                    key={post._id}
-                    className={`post-card${idx === 0 ? " post-card--featured" : ""}`}
-                    onClick={() => router.push(`/post/${post._id}`)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => e.key === "Enter" && router.push(`/post/${post._id}`)}
-                  >
-                    <div className="post-card-img-wrapper" style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-                      <Image
-                        src={bgUrl}
-                        alt={post.titulo || "Portada del artículo"}
-                        fill
-                        priority={idx === 0}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        style={{ objectFit: "cover", objectPosition: "center" }}
-                      />
-                    </div>
-
-                    <span className="card-badge">{categoria}</span>
-
-                    <div className="post-content-overlay-home">
-                      <div className="card-meta">
-                        <div className="avatar-wrapper" style={{ position: "relative", width: "32px", height: "32px", borderRadius: "50%", overflow: "hidden" }}>
-                          <Image
-                            src={post.avatar || DEFAULT_AVATAR}
-                            alt={`Avatar de ${post.autor || "autor"}`}
-                            fill
-                            sizes="32px"
-                            style={{ objectFit: "cover" }}
-                          />
-                        </div>
-                        <span className="autor">Por {post.autor || "Redacción"}</span>
-                      </div>
-
-                      <h3>{post.titulo}</h3>
-
-                      <div className="card-footer">
-                        <button
-                          className="btn-ver-mas"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            router.push(`/post/${post._id}`);
-                          }}
-                        >
-                          Leer artículo
-                          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                            <path d="M3 8h10M9 4l4 4-4 4" />
-                          </svg>
-                        </button>
-
-                        <PostStatsMini postId={post._id} />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </section>
-      </div>
-    </>
+      )}
+    </section>
   );
 }
