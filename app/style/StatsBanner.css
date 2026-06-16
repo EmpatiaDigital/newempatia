@@ -29,7 +29,6 @@
   padding-left: 0;
 }
 
-/* Acento decorativo para dar jerarquía al texto */
 .stats-banner-text::before {
   content: "";
   display: block;
@@ -86,6 +85,85 @@
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+/* ── Carrusel de testimonios ── */
+
+.stats-banner-testimonio-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.stats-banner-testimonio {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.08);
+  border: 1px solid #e6edf5;
+  border-left: 4px solid #4a90d9;
+  text-align: left;
+  width: 100%;
+
+  /* Estado inicial: invisible */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.stats-banner-testimonio--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stats-banner-testimonio-texto {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #334155;
+  margin: 0;
+  font-style: italic;
+}
+
+.stats-banner-testimonio-autor {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e3a5f;
+  letter-spacing: 0.02em;
+}
+
+.stats-banner-testimonio-autor em {
+  font-style: normal;
+  font-weight: 500;
+  color: #4a90d9;
+}
+
+/* ── Dots indicadores ── */
+
+.stats-banner-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.stats-banner-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.stats-banner-dot--activo {
+  background: linear-gradient(135deg, #1e3a5f, #4a90d9);
+  transform: scale(1.3);
 }
 
 /* ── Panel admin (superadmin) ── */
@@ -192,6 +270,14 @@
   .stats-banner-text::before {
     margin: 0 0 16px;
   }
+
+  .stats-banner-testimonio-wrapper {
+    align-items: flex-start;
+  }
+
+  .stats-banner-testimonio {
+    text-align: left;
+  }
 }
 
 @media (max-width: 480px) {
@@ -206,5 +292,13 @@
   .stats-banner-box {
     min-width: 120px;
     padding: 18px 20px;
+  }
+
+  .stats-banner-testimonio {
+    padding: 18px 20px;
+  }
+
+  .stats-banner-testimonio-texto {
+    font-size: 14px;
   }
 }
