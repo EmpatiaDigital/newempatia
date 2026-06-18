@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   creator: "Empatía Digital",
   publisher: "Empatía Digital",
   icons: {
-    icon: "./icon.png",
+    icon: "/icon.png",
   },
 
   // ─── Open Graph ─────────────────────────────────────────────────────────────
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
       "Aprendé a usar la IA y la tecnología con conciencia y seguridad.",
     images: [
       {
-        url: "./icon.png",
+        url: "/icon.png",
         width: 1200,
         height: 630,
         alt: "Empatía Digital – Educación y tecnología con propósito",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     title: "Empatía Digital",
     description:
       "Aprendé a usar la IA y la tecnología con conciencia y seguridad.",
-    images: ["./icon.png"],
+    images: ["/icon.png"],
   },
 
   // ─── Manifest PWA ────────────────────────────────────────────────────────────
