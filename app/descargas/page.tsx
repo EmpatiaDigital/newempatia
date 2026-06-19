@@ -149,8 +149,8 @@ export default function RecursosPage() {
               </div>
               <div className="rp-stat-divider" />
               <div className="rp-stat">
-                <span className="rp-stat-num">{counts.video}</span>
-                <span className="rp-stat-lbl">Videos</span>
+                <span className="rp-stat-num">{counts.imagen}</span>
+                <span className="rp-stat-lbl">Imagenes</span>
               </div>
               <div className="rp-stat-divider" />
               <div className="rp-stat">
