@@ -107,7 +107,9 @@ export default function RecursosPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ visitorId, evento, titulo, timestamp: new Date().toISOString() }),
       });
-    } catch { /* silencioso */ }
+    } catch { /* silencioso  
+    video:  materialDB.filter((r) => r.type === "video").length,
+    */ }
   };
 
   const filtrados = filtro === "todos" ? materialDB : materialDB.filter((r) => r.type === filtro);
@@ -118,7 +120,6 @@ export default function RecursosPage() {
   const counts: CountsType = {
     todos:  materialDB.length,
     pdf:    materialDB.filter((r) => r.type === "pdf").length,
-    video:  materialDB.filter((r) => r.type === "video").length,
     imagen: materialDB.filter((r) => r.type === "imagen").length,
     libro:  materialDB.filter((r) => r.type === "libro").length,
   };
