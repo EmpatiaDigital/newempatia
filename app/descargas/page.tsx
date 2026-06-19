@@ -35,7 +35,11 @@ export default function RecursosPage() {
   const cargarMateriales = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/descarga`);
+      // ── Fix: forzar que no use caché del browser ──
+      const res = await fetch(`${API_BASE}/api/descarga`, {
+        cache: "no-store",
+        headers: { "Cache-Control": "no-cache" },
+      });
       if (!res.ok) { setMaterialDB([]); return; }
       const data: unknown = await res.json();
       if (!Array.isArray(data)) { setMaterialDB([]); return; }
