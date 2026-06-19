@@ -617,3 +617,11 @@
   .rc-overlay      { opacity: 1; }
   .ad-drawer       { width: 100vw; }
 }
+.ad-drawer {
+  height: 100vh !important;
+}
+
+.ad-body {
+  min-height: 0 !important;
+  flex: 1 !important;
+}
