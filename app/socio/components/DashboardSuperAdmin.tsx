@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "../../assets/empatialog.jpeg";
-import StatsBanner from "../../Statsbanner/page";
+import StatsBanner from "../Statsbanner/page";
 
 // ── Tipos ─────────────────────────────────────────────────────────────────────
 
