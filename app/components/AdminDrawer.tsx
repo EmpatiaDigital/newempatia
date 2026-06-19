@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import type { Resource, ResourceType } from "../types/recursos";
 import "../style/Recursos.css";
 
-const API_BASE = "https://newempatiabackend.vercel.app";
+const API_BASE = "https://empatia-dominio-back.vercel.app";
 
 const TIPOS: { value: ResourceType; label: string }[] = [
   { value: "pdf",    label: "PDF" },
@@ -44,11 +44,8 @@ export default function AdminDrawer({
   const archivoRef = useRef<HTMLInputElement>(null);
   const portadaRef = useRef<HTMLInputElement>(null);
 
-  // ── Pre-rellenar al editar / limpiar al abrir en modo crear ────────────────
+  // ── Pre-rellenar al editar ───────────────────────────────────────────────────
   useEffect(() => {
-    // No hacer nada si el drawer está cerrado
-    if (!open) return;
-
     if (editItem) {
       setTitle(editItem.title ?? "");
       setType(editItem.type ?? "pdf");
@@ -61,7 +58,7 @@ export default function AdminDrawer({
     } else {
       resetForm();
     }
-  }, [open, editItem]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [editItem, open]);
 
   const resetForm = () => {
     setTitle("");
@@ -94,10 +91,10 @@ export default function AdminDrawer({
       formData.append("title",    title.trim());
       formData.append("type",     type);
       formData.append("filename", filename.trim());
-      if (email.trim())      formData.append("email",       email.trim());
-      if (fileUrl.trim())    formData.append("fileUrl",     fileUrl.trim());
-      if (portadaUrl.trim()) formData.append("portada",     portadaUrl.trim());
-      if (archivoFile)       formData.append("file",        archivoFile);
+      if (email.trim())      formData.append("email",      email.trim());
+      if (fileUrl.trim())    formData.append("fileUrl",    fileUrl.trim());
+      if (portadaUrl.trim()) formData.append("portada",    portadaUrl.trim());
+      if (archivoFile)       formData.append("file",       archivoFile);
       if (portadaFile)       formData.append("portadaFile", portadaFile);
 
       const url    = isEditing
