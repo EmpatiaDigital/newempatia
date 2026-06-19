@@ -44,8 +44,11 @@ export default function AdminDrawer({
   const archivoRef = useRef<HTMLInputElement>(null);
   const portadaRef = useRef<HTMLInputElement>(null);
 
-  // ── Pre-rellenar al editar ───────────────────────────────────────────────────
+  // ── Pre-rellenar al editar / limpiar al abrir en modo crear ────────────────
   useEffect(() => {
+    // No hacer nada si el drawer está cerrado
+    if (!open) return;
+
     if (editItem) {
       setTitle(editItem.title ?? "");
       setType(editItem.type ?? "pdf");
@@ -58,7 +61,7 @@ export default function AdminDrawer({
     } else {
       resetForm();
     }
-  }, [editItem, open]);
+  }, [open, editItem]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const resetForm = () => {
     setTitle("");
@@ -91,10 +94,10 @@ export default function AdminDrawer({
       formData.append("title",    title.trim());
       formData.append("type",     type);
       formData.append("filename", filename.trim());
-      if (email.trim())      formData.append("email",      email.trim());
-      if (fileUrl.trim())    formData.append("fileUrl",    fileUrl.trim());
-      if (portadaUrl.trim()) formData.append("portada",    portadaUrl.trim());
-      if (archivoFile)       formData.append("file",       archivoFile);
+      if (email.trim())      formData.append("email",       email.trim());
+      if (fileUrl.trim())    formData.append("fileUrl",     fileUrl.trim());
+      if (portadaUrl.trim()) formData.append("portada",     portadaUrl.trim());
+      if (archivoFile)       formData.append("file",        archivoFile);
       if (portadaFile)       formData.append("portadaFile", portadaFile);
 
       const url    = isEditing
